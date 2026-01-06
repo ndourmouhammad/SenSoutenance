@@ -42,7 +42,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtEmailProfesseur = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSpecialite = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtMDPProfesseur = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgProfesseur)).BeginInit();
@@ -51,7 +51,7 @@
             // dgProfesseur
             // 
             this.dgProfesseur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProfesseur.Location = new System.Drawing.Point(679, 101);
+            this.dgProfesseur.Location = new System.Drawing.Point(675, 159);
             this.dgProfesseur.Name = "dgProfesseur";
             this.dgProfesseur.RowHeadersWidth = 82;
             this.dgProfesseur.RowTemplate.Height = 33;
@@ -169,12 +169,12 @@
             this.label5.TabIndex = 28;
             this.label5.Text = "Spécialité";
             // 
-            // textBox1
+            // txtSpecialite
             // 
-            this.textBox1.Location = new System.Drawing.Point(358, 389);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(286, 31);
-            this.textBox1.TabIndex = 27;
+            this.txtSpecialite.Location = new System.Drawing.Point(358, 389);
+            this.txtSpecialite.Name = "txtSpecialite";
+            this.txtSpecialite.Size = new System.Drawing.Size(286, 31);
+            this.txtSpecialite.TabIndex = 27;
             // 
             // label6
             // 
@@ -201,7 +201,7 @@
             this.ClientSize = new System.Drawing.Size(1662, 739);
             this.ControlBox = false;
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSpecialite);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtMDPProfesseur);
             this.Controls.Add(this.label3);
@@ -241,7 +241,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtEmailProfesseur;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSpecialite;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtMDPProfesseur;
     }
