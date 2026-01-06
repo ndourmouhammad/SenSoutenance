@@ -16,5 +16,7 @@ namespace AppSenSoutenance.Views.Parametre
         {
             InitializeComponent();
         }
+
+        
     }
 }

@@ -213,6 +213,9 @@
     <EmbeddedResource Include="Views\Parametre\frmCandidat.resx">
       <DependentUpon>frmCandidat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Parametre\frmMemoire.resx">
+      <DependentUpon>frmMemoire.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Parametre\frmProfesseur.resx">
       <DependentUpon>frmProfesseur.cs</DependentUpon>
     </EmbeddedResource>
