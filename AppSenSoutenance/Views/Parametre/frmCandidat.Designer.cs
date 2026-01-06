@@ -163,6 +163,7 @@
             this.btnSelect.TabIndex = 41;
             this.btnSelect.Text = "&Selectionner";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnRemove
             // 
@@ -172,6 +173,7 @@
             this.btnRemove.TabIndex = 44;
             this.btnRemove.Text = "&Supprimer";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -181,6 +183,7 @@
             this.btnEdit.TabIndex = 43;
             this.btnEdit.Text = "&Modifier";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -190,6 +193,7 @@
             this.btnAdd.TabIndex = 42;
             this.btnAdd.Text = "&Ajouter";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // frmCandidat
             // 
@@ -217,7 +221,8 @@
             this.Controls.Add(this.dgCandidat);
             this.Name = "frmCandidat";
             this.ShowIcon = false;
-            this.Text = "frmCandidat";
+            this.Text = "Candidat";
+            this.Load += new System.EventHandler(this.frmCandidat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCandidat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
