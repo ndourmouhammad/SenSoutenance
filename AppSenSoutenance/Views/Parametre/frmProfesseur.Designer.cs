@@ -57,7 +57,6 @@
             this.dgProfesseur.RowTemplate.Height = 33;
             this.dgProfesseur.Size = new System.Drawing.Size(945, 556);
             this.dgProfesseur.TabIndex = 1;
-            this.dgProfesseur.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProfesseur_CellContentClick);
             // 
             // btnSelect
             // 
@@ -67,6 +66,7 @@
             this.btnSelect.TabIndex = 4;
             this.btnSelect.Text = "&Selectionner";
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnRemove
             // 
@@ -86,6 +86,7 @@
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "&Modifier";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -95,6 +96,7 @@
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "&Ajouter";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label1
             // 
@@ -219,6 +221,7 @@
             this.Controls.Add(this.dgProfesseur);
             this.Name = "frmProfesseur";
             this.Text = "Professeur";
+            this.Load += new System.EventHandler(this.frmProfesseur_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgProfesseur)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
