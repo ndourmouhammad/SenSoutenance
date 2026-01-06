@@ -16,5 +16,15 @@ namespace AppSenSoutenance.Views.Parametre
         {
             InitializeComponent();
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgProfesseur_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
