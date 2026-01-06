@@ -126,5 +126,14 @@ namespace AppSenSoutenance
             chefDepartement.Show();
             chefDepartement.WindowState = FormWindowState.Maximized;
         }
+
+        private void sujetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fermer();
+            frmSujet sujet = new frmSujet();
+            sujet.MdiParent = this;
+            sujet.Show();
+            sujet.WindowState = FormWindowState.Maximized;
+        }
     }
 }

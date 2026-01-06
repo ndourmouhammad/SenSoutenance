@@ -41,6 +41,7 @@
             this.departementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.candidatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sujetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +92,8 @@
             this.soutenanceToolStripMenuItem,
             this.departementToolStripMenuItem,
             this.candidatToolStripMenuItem,
-            this.chefToolStripMenuItem});
+            this.chefToolStripMenuItem,
+            this.sujetToolStripMenuItem});
             this.parametreToolStripMenuItem.Name = "parametreToolStripMenuItem";
             this.parametreToolStripMenuItem.Size = new System.Drawing.Size(127, 38);
             this.parametreToolStripMenuItem.Text = "Parametre";
@@ -152,6 +154,13 @@
             this.chefToolStripMenuItem.Text = "ChefDepartement";
             this.chefToolStripMenuItem.Click += new System.EventHandler(this.chefToolStripMenuItem_Click);
             // 
+            // sujetToolStripMenuItem
+            // 
+            this.sujetToolStripMenuItem.Name = "sujetToolStripMenuItem";
+            this.sujetToolStripMenuItem.Size = new System.Drawing.Size(359, 44);
+            this.sujetToolStripMenuItem.Text = "Sujet";
+            this.sujetToolStripMenuItem.Click += new System.EventHandler(this.sujetToolStripMenuItem_Click);
+            // 
             // frmMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
@@ -190,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem departementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem candidatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chefToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sujetToolStripMenuItem;
     }
 }
