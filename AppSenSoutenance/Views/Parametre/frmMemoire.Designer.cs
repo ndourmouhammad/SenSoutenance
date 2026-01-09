@@ -102,7 +102,7 @@
             this.dgMemoire.RowHeadersWidth = 82;
             this.dgMemoire.RowTemplate.Height = 35;
             this.dgMemoire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMemoire.Size = new System.Drawing.Size(625, 643);
+            this.dgMemoire.Size = new System.Drawing.Size(591, 843);
             this.dgMemoire.TabIndex = 0;
             // 
             // groupBox1
@@ -326,7 +326,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.groupBox3.Location = new System.Drawing.Point(12, 70);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(943, 105);
+            this.groupBox3.Size = new System.Drawing.Size(909, 105);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "🔍 Recherche";
@@ -340,7 +340,7 @@
             this.btnResetSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnResetSearch.ForeColor = System.Drawing.Color.White;
-            this.btnResetSearch.Location = new System.Drawing.Point(824, 60);
+            this.btnResetSearch.Location = new System.Drawing.Point(790, 60);
             this.btnResetSearch.Name = "btnResetSearch";
             this.btnResetSearch.Size = new System.Drawing.Size(100, 32);
             this.btnResetSearch.TabIndex = 7;
@@ -357,7 +357,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(718, 60);
+            this.btnSearch.Location = new System.Drawing.Point(684, 60);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 32);
             this.btnSearch.TabIndex = 6;

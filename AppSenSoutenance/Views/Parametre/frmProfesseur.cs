@@ -24,6 +24,26 @@ namespace AppSenSoutenance.Views.Parametre
         /// Contexte de la base de données
         /// </summary>
         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
+        
+        /// <summary>
+        /// Configure les propriétés d'affichage pour éviter le débordement à l'exécution.
+        /// </summary>
+        private void ConfigureLayout()
+        {
+            this.AutoScroll = true;
+            if (this.MinimumSize.Width < 800) this.MinimumSize = new Size(800, 600);
+            
+            if (dgProfesseur != null)
+            {
+                dgProfesseur.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                dgProfesseur.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgProfesseur.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgProfesseur.AllowUserToResizeColumns = true;
+                dgProfesseur.AllowUserToResizeRows = true;
+                dgProfesseur.ScrollBars = ScrollBars.Both;
+                dgProfesseur.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            }
+        }
 
         /// <summary>
         /// Methode pour charger les professeurs dans le datagridview

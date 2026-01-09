@@ -42,6 +42,9 @@
             this.sujetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.securiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilisateurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.professeurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.candidatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +55,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuAction,
             this.tableauDeBordToolStripMenuItem,
-            this.parametreToolStripMenuItem});
+            this.parametreToolStripMenuItem,
+            this.securiteToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1064, 24);
@@ -87,9 +91,12 @@
             this.parametreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.anneeAcademiqueToolStripMenuItem,
             this.sessionToolStripMenuItem,
+            this.professeurToolStripMenuItem,
             this.memoireToolStripMenuItem,
             this.soutenanceToolStripMenuItem,
             this.departementToolStripMenuItem,
+            this.candidatToolStripMenuItem,
+            this.chefToolStripMenuItem,
             this.sujetToolStripMenuItem});
             this.parametreToolStripMenuItem.Name = "parametreToolStripMenuItem";
             this.parametreToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
@@ -211,5 +218,10 @@
         private System.Windows.Forms.ToolStripMenuItem departementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sujetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tableauDeBordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem securiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem utilisateurToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem professeurToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem candidatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem chefToolStripMenuItem;
     }
 }
