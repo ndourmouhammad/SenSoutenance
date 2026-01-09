@@ -255,6 +255,7 @@
             this.Controls.Add(this.dgProfesseur);
             this.Name = "frmProfesseur";
             this.Text = "Professeur";
+            this.AutoScroll = true;
             this.Load += new System.EventHandler(this.frmProfesseur_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgProfesseur)).EndInit();
             this.ResumeLayout(false);

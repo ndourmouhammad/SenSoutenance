@@ -139,11 +139,11 @@
     <Compile Include="Shared\Crypted.cs" />
     <Compile Include="Shared\FilerList.cs" />
     <Compile Include="Shared\ListItem.cs" />
-    <Compile Include="Views\Account\frmUtilisateur.cs">
+    <Compile Include="Views\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Account\frmUtilisateur.Designer.cs">
-      <DependentUpon>frmUtilisateur.cs</DependentUpon>
+    <Compile Include="Views\frmDashboard.Designer.cs">
+      <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Parametre\frmAnneeAcademique.cs">
       <SubType>Form</SubType>

@@ -86,7 +86,19 @@ namespace AppSenSoutenance
             Computer myComputer = new Computer();
             this.Width = myComputer.Screen.Bounds.Width;
             this.Height = myComputer.Screen.Bounds.Height;
-            this.Location = new Point(0, 0);  
+            this.Location = new Point(0, 0);
+
+            // Charger le tableau de bord par défaut
+            tableauDeBordToolStripMenuItem_Click(null, null);
+        }
+
+        private void tableauDeBordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fermer();
+            frmDashboard dashboard = new frmDashboard();
+            dashboard.MdiParent = this;
+            dashboard.Show();
+            dashboard.WindowState = FormWindowState.Maximized;
         }
 
         private void memoireToolStripMenuItem_Click(object sender, EventArgs e)
