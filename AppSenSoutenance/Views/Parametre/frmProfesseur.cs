@@ -16,10 +16,37 @@ namespace AppSenSoutenance.Views.Parametre
         public frmProfesseur()
         {
             InitializeComponent();
+            ConfigureLayout();
         }
 
+        /// <summary>
+        /// Configure les propriétés d'affichage pour éviter le débordement
+        /// </summary>
+        private void ConfigureLayout()
+        {
+            // Configuration du DataGridView
+            if (dgProfesseur != null)
+            {
+                dgProfesseur.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                dgProfesseur.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgProfesseur.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgProfesseur.AllowUserToResizeColumns = true;
+                dgProfesseur.AllowUserToResizeRows = true;
+                dgProfesseur.ScrollBars = ScrollBars.Both;
+                dgProfesseur.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgProfesseur.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+        }
+
+
+        /// <summary>
+        /// Contexte de la base de données
+        /// </summary>
         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
 
+        /// <summary>
+        /// Methode pour charger les professeurs dans le datagridview
+        /// </summary>
         private void frmProfesseur_Load(object sender, EventArgs e)
         {
             dgProfesseur.DataSource = db.professeurs.ToList();

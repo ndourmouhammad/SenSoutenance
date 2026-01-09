@@ -136,8 +136,15 @@
     <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\Crypted.cs" />
     <Compile Include="Shared\FilerList.cs" />
     <Compile Include="Shared\ListItem.cs" />
+    <Compile Include="Views\Account\frmUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Account\frmUtilisateur.Designer.cs">
+      <DependentUpon>frmUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parametre\frmAnneeAcademique.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +214,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\Account\frmUtilisateur.resx">
+      <DependentUpon>frmUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Parametre\frmAnneeAcademique.resx">
       <DependentUpon>frmAnneeAcademique.cs</DependentUpon>
     </EmbeddedResource>

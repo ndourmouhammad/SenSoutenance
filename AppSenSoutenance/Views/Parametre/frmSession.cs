@@ -16,7 +16,33 @@ namespace AppSenSoutenance.Views.Parametre
         public frmSession()
         {
             InitializeComponent();
+            ConfigureLayout();
         }
+
+        /// <summary>
+        /// Configure les propriétés d'affichage pour éviter le débordement
+        /// </summary>
+        private void ConfigureLayout()
+        {
+            // Configuration du DataGridView
+            if (dgSession != null)
+            {
+                dgSession.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                dgSession.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgSession.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgSession.AllowUserToResizeColumns = true;
+                dgSession.AllowUserToResizeRows = true;
+                dgSession.ScrollBars = ScrollBars.Both;
+                dgSession.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgSession.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+        }
+
+        /// <summary>
+        /// Methode pour charger les sessions dans le datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void frmSession_Load(object sender, EventArgs e)
         {
@@ -25,6 +51,11 @@ namespace AppSenSoutenance.Views.Parametre
 
         // --- ACTIONS ---
 
+        /// <summary>
+        /// Methode pour ajouter une nouvelle session
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (ValidationFormulaire())
@@ -41,6 +72,11 @@ namespace AppSenSoutenance.Views.Parametre
             }
         }
 
+        /// <summary>
+        /// Methode pour selectionner une session dans le datagridview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if (dgSession.CurrentRow != null)
@@ -57,6 +93,11 @@ namespace AppSenSoutenance.Views.Parametre
             }
         }
 
+        /// <summary>
+        /// Methode pour modifier une session sélectionnée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgSession.CurrentRow != null && ValidationFormulaire())
@@ -76,6 +117,11 @@ namespace AppSenSoutenance.Views.Parametre
             }
         }
 
+        /// <summary>
+        /// methode pour supprimer une session sélectionnée
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemove_Click(object sender, EventArgs e)
         {
             if (dgSession.CurrentRow != null)
@@ -95,8 +141,9 @@ namespace AppSenSoutenance.Views.Parametre
             }
         }
 
-        // --- METHODES UTILES (Refactoring) ---
-
+        /// <summary>
+        /// Methode pour rafraichir l'interface
+        /// </summary>  
         private void RafraichirInterface()
         {
             txtSession.Text = string.Empty;
@@ -121,6 +168,9 @@ namespace AppSenSoutenance.Views.Parametre
             txtSession.Focus();
         }
 
+        /// <summary>
+        /// Validation du formulaire
+        /// </summary>
         private bool ValidationFormulaire()
         {
             if (string.IsNullOrWhiteSpace(txtSession.Text))
@@ -138,6 +188,9 @@ namespace AppSenSoutenance.Views.Parametre
             return true;
         }
 
+        /// <summary>
+        /// Methode pour rechercher des sessions
+        /// </summary>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             var liste = db.sessions.ToList();

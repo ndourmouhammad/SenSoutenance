@@ -15,6 +15,26 @@ namespace AppSenSoutenance.Views.Parametre
         public frmSujet()
         {
             InitializeComponent();
+            ConfigureLayout();
+        }
+
+        /// <summary>
+        /// Configure les propriétés d'affichage pour éviter le débordement
+        /// </summary>
+        private void ConfigureLayout()
+        {
+            // Configuration du DataGridView
+            if (dgSujet != null)
+            {
+                dgSujet.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                dgSujet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgSujet.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgSujet.AllowUserToResizeColumns = true;
+                dgSujet.AllowUserToResizeRows = true;
+                dgSujet.ScrollBars = ScrollBars.Both;
+                dgSujet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgSujet.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
         }
 
         private void frmSujet_Load(object sender, EventArgs e)

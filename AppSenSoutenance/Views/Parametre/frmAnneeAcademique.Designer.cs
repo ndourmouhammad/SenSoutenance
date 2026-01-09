@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgAnneeAcademique = new System.Windows.Forms.DataGridView();
             this.txtAnneeAcademiqueVal = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,92 +43,124 @@
             // 
             // dgAnneeAcademique
             // 
+            this.dgAnneeAcademique.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgAnneeAcademique.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgAnneeAcademique.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAnneeAcademique.Location = new System.Drawing.Point(320, 114);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgAnneeAcademique.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgAnneeAcademique.Location = new System.Drawing.Point(315, 70);
             this.dgAnneeAcademique.Name = "dgAnneeAcademique";
             this.dgAnneeAcademique.RowHeadersWidth = 82;
             this.dgAnneeAcademique.RowTemplate.Height = 33;
-            this.dgAnneeAcademique.Size = new System.Drawing.Size(696, 523);
+            this.dgAnneeAcademique.Size = new System.Drawing.Size(731, 512);
             this.dgAnneeAcademique.TabIndex = 0;
             // 
             // txtAnneeAcademiqueVal
             // 
-            this.txtAnneeAcademiqueVal.Location = new System.Drawing.Point(17, 294);
+            this.txtAnneeAcademiqueVal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtAnneeAcademiqueVal.Location = new System.Drawing.Point(17, 243);
             this.txtAnneeAcademiqueVal.Name = "txtAnneeAcademiqueVal";
-            this.txtAnneeAcademiqueVal.Size = new System.Drawing.Size(238, 31);
+            this.txtAnneeAcademiqueVal.Size = new System.Drawing.Size(238, 43);
             this.txtAnneeAcademiqueVal.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 242);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label2.Location = new System.Drawing.Point(12, 191);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 25);
+            this.label2.Size = new System.Drawing.Size(91, 37);
             this.label2.TabIndex = 3;
             this.label2.Text = "Valeur";
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(96, 380);
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(167)))), ((int)(((byte)(69)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(96, 329);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(159, 55);
+            this.btnAdd.Size = new System.Drawing.Size(159, 44);
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "&Ajouter";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(96, 477);
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(96, 426);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(159, 55);
+            this.btnEdit.Size = new System.Drawing.Size(159, 44);
             this.btnEdit.TabIndex = 5;
             this.btnEdit.Text = "&Modifier";
-            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(96, 582);
+            this.btnRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnRemove.ForeColor = System.Drawing.Color.White;
+            this.btnRemove.Location = new System.Drawing.Point(96, 531);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(159, 55);
+            this.btnRemove.Size = new System.Drawing.Size(159, 44);
             this.btnRemove.TabIndex = 6;
             this.btnRemove.Text = "&Supprimer";
-            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSelect
             // 
+            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
+            this.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSelect.ForeColor = System.Drawing.Color.White;
             this.btnSelect.Location = new System.Drawing.Point(96, 1);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(159, 55);
+            this.btnSelect.Size = new System.Drawing.Size(159, 44);
             this.btnSelect.TabIndex = 3;
             this.btnSelect.Text = "&Selectionner";
-            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.UseVisualStyleBackColor = false;
             this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // txtLibelleAnneeAcademique
             // 
-            this.txtLibelleAnneeAcademique.Location = new System.Drawing.Point(17, 166);
+            this.txtLibelleAnneeAcademique.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtLibelleAnneeAcademique.Location = new System.Drawing.Point(17, 115);
             this.txtLibelleAnneeAcademique.Name = "txtLibelleAnneeAcademique";
-            this.txtLibelleAnneeAcademique.Size = new System.Drawing.Size(238, 31);
+            this.txtLibelleAnneeAcademique.Size = new System.Drawing.Size(238, 43);
             this.txtLibelleAnneeAcademique.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 114);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.label1.Location = new System.Drawing.Point(12, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 25);
+            this.label1.Size = new System.Drawing.Size(77, 37);
             this.label1.TabIndex = 9;
             this.label1.Text = "Texte";
             // 
             // frmAnneeAcademique
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1039, 649);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1074, 701);
             this.ControlBox = false;
             this.Controls.Add(this.txtLibelleAnneeAcademique);
             this.Controls.Add(this.label1);
@@ -138,6 +171,7 @@
             this.Controls.Add(this.txtAnneeAcademiqueVal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dgAnneeAcademique);
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.Name = "frmAnneeAcademique";
             this.Text = "Annee Academique";
             this.Load += new System.EventHandler(this.frmAnneeAcademique_Load);

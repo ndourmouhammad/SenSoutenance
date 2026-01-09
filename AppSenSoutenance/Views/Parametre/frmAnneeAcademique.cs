@@ -16,16 +16,39 @@ namespace AppSenSoutenance.Views.Parametre
         public frmAnneeAcademique()
         {
             InitializeComponent();
+            ConfigureLayout();
         }
 
-         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
+        /// <summary>
+        /// Configure les propriétés d'affichage pour éviter le débordement
+        /// </summary>
+        private void ConfigureLayout()
+        {
+            // Configuration du DataGridView
+            if (dgAnneeAcademique != null)
+            {
+                dgAnneeAcademique.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                dgAnneeAcademique.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgAnneeAcademique.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgAnneeAcademique.AllowUserToResizeColumns = true;
+                dgAnneeAcademique.AllowUserToResizeRows = true;
+                dgAnneeAcademique.ScrollBars = ScrollBars.Both;
+                dgAnneeAcademique.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgAnneeAcademique.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
+        }
+
+        // Contexte de la base de données utilisé pour les opérations CRUD
+        BdSenSoutenanceContext db = new BdSenSoutenanceContext();
 
 
+        // Chargement du formulaire : on alimente le DataGridView avec la liste des années académiques
         private void frmAnneeAcademique_Load(object sender, EventArgs e)
         {
             dgAnneeAcademique.DataSource = db.anneeAcademiques.ToList();
         }
 
+        // Méthode utilitaire pour réinitialiser les champs du formulaire et rafraîchir la grille
         public void effacer()
         {
             txtLibelleAnneeAcademique.Clear();
@@ -34,6 +57,7 @@ namespace AppSenSoutenance.Views.Parametre
             txtLibelleAnneeAcademique.Focus();
         }
 
+        // Ajout d'une nouvelle année académique : construction de l'entité puis sauvegarde en base
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AnneeAcademique anneeAcademique = new AnneeAcademique()
@@ -47,6 +71,7 @@ namespace AppSenSoutenance.Views.Parametre
             effacer();
         }
 
+        // Modification d'une année académique sélectionnée dans la grille
         private void btnEdit_Click(object sender, EventArgs e)
         {
             int? id = int.Parse(dgAnneeAcademique.CurrentRow.Cells[0].Value.ToString());
@@ -57,6 +82,7 @@ namespace AppSenSoutenance.Views.Parametre
             effacer();
         }
 
+        // Suppression de l'année académique sélectionnée
         private void btnRemove_Click(object sender, EventArgs e)
         {
             int? id = int.Parse(dgAnneeAcademique.CurrentRow.Cells[0].Value.ToString());
@@ -66,8 +92,10 @@ namespace AppSenSoutenance.Views.Parametre
             effacer();
         }
 
+        // Sélection d'une ligne : remplissage des champs depuis la grille
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            // Remplit les champs à partir des colonnes 1 et 2.
             txtLibelleAnneeAcademique.Text = dgAnneeAcademique.CurrentRow.Cells[1].Value.ToString();
             txtAnneeAcademiqueVal.Text = dgAnneeAcademique.CurrentRow.Cells[2].Value.ToString();
         }
