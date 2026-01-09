@@ -222,6 +222,7 @@
             this.Name = "frmCandidat";
             this.ShowIcon = false;
             this.Text = "Candidat";
+            this.AutoScroll = true;
             this.Load += new System.EventHandler(this.frmCandidat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgCandidat)).EndInit();
             this.ResumeLayout(false);

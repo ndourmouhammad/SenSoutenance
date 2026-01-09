@@ -18,8 +18,15 @@ namespace AppSenSoutenance.Views.Parametre
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Contexte de la base de données
+        /// </summary>
         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
 
+        /// <summary>
+        /// Methode pour charger les professeurs dans le datagridview
+        /// </summary>
         private void frmProfesseur_Load(object sender, EventArgs e)
         {
             dgProfesseur.DataSource = db.professeurs.ToList();

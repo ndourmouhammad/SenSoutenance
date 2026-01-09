@@ -20,6 +20,10 @@ namespace AppSenSoutenance.Views.Parametre
 
         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
 
+
+        /// <summary>
+        /// Methode pour charger les candidats dans le datagridview
+        /// </summary>
         private void frmCandidat_Load(object sender, EventArgs e)
         {
             dgCandidat.DataSource = db.candidats.ToList();
@@ -41,6 +45,9 @@ namespace AppSenSoutenance.Views.Parametre
             txtNomCandidat.Focus();
         }
 
+        /// <summary>
+        /// Methode pour ajouter un candidat
+        /// </summary>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             Candidat candidat = new Candidat()
@@ -58,8 +65,10 @@ namespace AppSenSoutenance.Views.Parametre
             effacer();
         }
 
-        
 
+        /// <summary>
+        ///     Methode pour modifier un candidat
+        /// </summary>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             var current = dgCandidat.CurrentRow;
@@ -86,6 +95,9 @@ namespace AppSenSoutenance.Views.Parametre
             effacer();
         }
 
+        /// <summary>
+        /// Methode pour supprimer un candidat
+        /// </summary>
         private void btnRemove_Click(object sender, EventArgs e)
         {
             var current = dgCandidat.CurrentRow;
@@ -105,6 +117,9 @@ namespace AppSenSoutenance.Views.Parametre
 
         }
 
+        /// <summary>
+        /// Methode pour selectionner un candidat dans le datagridview
+        /// </summary>
         private void btnSelect_Click(object sender, EventArgs e)
         {
             var current = dgCandidat.CurrentRow;
