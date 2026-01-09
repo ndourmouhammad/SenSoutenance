@@ -16,6 +16,7 @@ namespace AppSenSoutenance.Views.Parametre
         public frmProfesseur()
         {
             InitializeComponent();
+            ConfigureLayout();
         }
 
 

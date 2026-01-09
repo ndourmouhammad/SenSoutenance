@@ -4,18 +4,18 @@ Application WinForms (.NET Framework 4.8) pour la gestion des soutenances.
 
 Objectif
 --------
-Projet de gestion des soutenances avec interfaces WinForms pour gérer les sessions, années, mémoires, soutenances, départements, candidats et professeurs.
+Projet de gestion des soutenances avec interfaces WinForms pour gÃ©rer les sessions, annÃ©es, mÃ©moires, soutenances, dÃ©partements, candidats et professeurs.
 
 Structure du projet
 -------------------
 Arborescence principale (fichiers importants) :
 
 - `AppSenSoutenance/`
-  - `Models/` (entités EF) — ex. `BdSenSoutenanceContext.cs`, `Session.cs`, `AnneeAcademique.cs`
-  - `Views/Parametre/` (forms) — ex. `frmSession.cs`, `frmAnneeAcademique.cs`, `frmSoutenance.cs`, `frmMemoire.cs`, `frmDepartement.cs`, `frmChefDepartement.cs`, `frmProfesseur.cs`, `frmCandidat.cs`
-  - `Shared/` — utilitaires comme `FilerList.cs`, `ListItem.cs`
-  - `Migrations/` — migrations Entity Framework
-  - `App.config` — chaîne de connexion et configuration EF
+  - `Models/` (entitÃ©s EF) â€” ex. `BdSenSoutenanceContext.cs`, `Session.cs`, `AnneeAcademique.cs`
+  - `Views/Parametre/` (forms) â€” ex. `frmSession.cs`, `frmAnneeAcademique.cs`, `frmSoutenance.cs`, `frmMemoire.cs`, `frmDepartement.cs`, `frmChefDepartement.cs`, `frmProfesseur.cs`, `frmCandidat.cs`
+  - `Shared/` â€” utilitaires comme `FilerList.cs`, `ListItem.cs`
+  - `Migrations/` â€” migrations Entity Framework
+  - `App.config` â€” chaÃ®ne de connexion et configuration EF
   - `Form1.cs`, `frmMDI.cs`, `Program.cs`
 
 Assignation des interfaces
@@ -30,20 +30,20 @@ Assignation des interfaces
 
 - TO DO - RBK
   - `AppSenSoutenance\Views\Parametre\frmDepartement.cs`
-  - `AppSenSoutenance\Views\Parametre\frmChefDepartement.cs`
+  - `AppSenSoutenance\Views\Parametre\frmSujet.cs`
 
 - TO DO - Mouhammad
-  - `AppSenSoutenance\Views\Parametre\frmProfesseur.cs`
-  - `AppSenSoutenance\Views\Parametre\frmCandidat.cs`
+  - `AppSenSoutenance\Views\Accounts\frmUtilisateur.cs`
+  - `la connexion`
 
-Bonnes pratiques pour l'équipe
+Bonnes pratiques pour l'Ã©quipe
 -----------------------------
 - Branches : `votre-prenom`.
 - Ne merger pas directement creer juste de pull request.
 
 Installation rapide
 -------------------
-Prérequis : Visual Studio (avec workload Desktop .NET), .NET Framework 4.8, MySQL Server, Git.
+PrÃ©requis : Visual Studio (avec workload Desktop .NET), .NET Framework 4.8, MySQL Server, Git.
 
 1. Cloner :
 
@@ -60,7 +60,7 @@ cd <repo>
 nuget restore
 ```
 
-4. Configurer la base : éditez `AppSenSoutenance\App.config` — mettez vos paramètres dans la clé `connBdSenSoutenance`.
+4. Configurer la base : Ã©ditez `AppSenSoutenance\App.config` â€” mettez vos paramÃ¨tres dans la clÃ© `connBdSenSoutenance`.
 
 Exemple :
 
@@ -69,7 +69,7 @@ Exemple :
 ```
 
 
-5. Appliquer les migrations (si nécessaire) :
+5. Appliquer les migrations (si nÃ©cessaire) :
 
 ```
 Update-Database -Verbose
@@ -77,7 +77,7 @@ Update-Database -Verbose
 
 6. Lancer l'application (F5).
 
-Dépannage rapide
+DÃ©pannage rapide
 ----------------
-- Si EF/MySQL pose problème : installez `MySql.Data` et `MySql.Data.EntityFramework` compatibles.
-- Si Update-Database échoue : vérifiez la chaîne de connexion et `Migrations\Configuration.cs`.
+- Si EF/MySQL pose problÃ¨me : installez `MySql.Data` et `MySql.Data.EntityFramework` compatibles.
+- Si Update-Database Ã©choue : vÃ©rifiez la chaÃ®ne de connexion et `Migrations\Configuration.cs`.

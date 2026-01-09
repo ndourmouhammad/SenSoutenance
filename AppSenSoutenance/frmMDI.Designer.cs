@@ -36,13 +36,12 @@
             this.parametreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anneeAcademiqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.professeurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memoireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.soutenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.candidatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sujetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.securiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.utilisateurToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,16 +87,14 @@
             this.parametreToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.anneeAcademiqueToolStripMenuItem,
             this.sessionToolStripMenuItem,
-            this.professeurToolStripMenuItem,
             this.memoireToolStripMenuItem,
             this.soutenanceToolStripMenuItem,
             this.departementToolStripMenuItem,
-            this.candidatToolStripMenuItem,
-            this.chefToolStripMenuItem,
             this.sujetToolStripMenuItem});
             this.parametreToolStripMenuItem.Name = "parametreToolStripMenuItem";
             this.parametreToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.parametreToolStripMenuItem.Text = "Parametre";
+            this.parametreToolStripMenuItem.Click += new System.EventHandler(this.parametreToolStripMenuItem_Click);
             // 
             // anneeAcademiqueToolStripMenuItem
             // 
@@ -162,6 +159,21 @@
             this.sujetToolStripMenuItem.Text = "Sujet";
             this.sujetToolStripMenuItem.Click += new System.EventHandler(this.sujetToolStripMenuItem_Click);
             // 
+            // securiteToolStripMenuItem
+            // 
+            this.securiteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.utilisateurToolStripMenuItem});
+            this.securiteToolStripMenuItem.Name = "securiteToolStripMenuItem";
+            this.securiteToolStripMenuItem.Size = new System.Drawing.Size(131, 41);
+            this.securiteToolStripMenuItem.Text = "Securite";
+            // 
+            // utilisateurToolStripMenuItem
+            // 
+            this.utilisateurToolStripMenuItem.Name = "utilisateurToolStripMenuItem";
+            this.utilisateurToolStripMenuItem.Size = new System.Drawing.Size(274, 46);
+            this.utilisateurToolStripMenuItem.Text = "Utilisateur";
+            this.utilisateurToolStripMenuItem.Click += new System.EventHandler(this.utilisateurToolStripMenuItem_Click);
+            // 
             // frmMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -170,7 +182,7 @@
             this.ClientSize = new System.Drawing.Size(1064, 666);
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -194,12 +206,9 @@
         private System.Windows.Forms.ToolStripMenuItem parametreToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem anneeAcademiqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sessionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem professeurToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem memoireToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem soutenanceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem departementToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem candidatToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem chefToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sujetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tableauDeBordToolStripMenuItem;
     }

@@ -16,6 +16,26 @@ namespace AppSenSoutenance.Views.Parametre
         public frmCandidat()
         {
             InitializeComponent();
+            ConfigureLayout();
+        }
+
+        /// <summary>
+        /// Configure les propriétés d'affichage pour éviter le débordement
+        /// </summary>
+        private void ConfigureLayout()
+        {
+            // Configuration du DataGridView
+            if (dgCandidat != null)
+            {
+                dgCandidat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+                dgCandidat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dgCandidat.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                dgCandidat.AllowUserToResizeColumns = true;
+                dgCandidat.AllowUserToResizeRows = true;
+                dgCandidat.ScrollBars = ScrollBars.Both;
+                dgCandidat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dgCandidat.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            }
         }
 
         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
