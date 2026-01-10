@@ -14,6 +14,7 @@ namespace AppSenSoutenance.Models
         
         public BdSenSoutenanceContext() : base("connBdSenSoutenance")
         {
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BdSenSoutenanceContext>());
 
         }
 
@@ -30,11 +31,13 @@ namespace AppSenSoutenance.Models
         public DbSet<Admin> admins { get; set; }
 
         public DbSet<ChefDepartement> chefDepartements { get; set; }
+        public DbSet<Departement> Departements { get; set; }
 
         public DbSet<Candidat> candidats { get; set; }
 
         public DbSet<Professeur> professeurs { get; set; }
 
+        
 
     }
 }
