@@ -17,6 +17,7 @@ namespace AppSenSoutenance.Views.Parametre
         {
             InitializeComponent();
             ConfigureLayout();
+            ConfigurerEffetsBoutons();
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace AppSenSoutenance.Views.Parametre
         /// </summary>
         private void frmCandidat_Load(object sender, EventArgs e)
         {
-            dgCandidat.DataSource = db.candidats.ToList();
+            effacer();
         }
 
         /// <summary>
@@ -61,7 +62,18 @@ namespace AppSenSoutenance.Views.Parametre
             txtTelCandidat.Clear();
             txtMDPCandidat.Clear();
             txtMatricule.Clear();
-            dgCandidat.DataSource = db.candidats.ToList();
+            dgCandidat.DataSource = db.candidats.Select(c => new {
+                Id = c.IdUtilisateur,
+                Prenom = c.PrenomUtilisateur,
+                Nom = c.NomUtilisateur,
+                Email = c.EmailUtilisateur,
+                Telephone = c.TelUtilisateur,
+                c.MatriculeCandidat
+            }).ToList();
+            
+            if (dgCandidat.Columns["Id"] != null) dgCandidat.Columns["Id"].Visible = false;
+            dgCandidat.Columns["MatriculeCandidat"].HeaderText = "Matricule";
+            
             txtNomCandidat.Focus();
         }
 
@@ -94,10 +106,9 @@ namespace AppSenSoutenance.Views.Parametre
             var current = dgCandidat.CurrentRow;
             if (current == null) return;
 
-            var bound = current.DataBoundItem as AppSenSoutenance.Models.Candidat;
-            if (bound == null) return;
+            int id = (int)current.Cells["Id"].Value;
 
-            var candidat = db.candidats.Find(bound.IdUtilisateur);
+            var candidat = db.candidats.Find(id);
             if (candidat == null)
             {
                 MessageBox.Show("Candidat introuvable.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -122,9 +133,8 @@ namespace AppSenSoutenance.Views.Parametre
         {
             var current = dgCandidat.CurrentRow;
             if (current == null) return;
-            var bound = current.DataBoundItem as AppSenSoutenance.Models.Candidat;
-            if (bound == null) return;
-            var candidat = db.candidats.Find(bound.IdUtilisateur);
+            int id = (int)current.Cells["Id"].Value;
+            var candidat = db.candidats.Find(id);
             if (candidat == null)
             {
                 MessageBox.Show("Candidat introuvable.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -145,17 +155,31 @@ namespace AppSenSoutenance.Views.Parametre
             var current = dgCandidat.CurrentRow;
             if (current == null) return;
 
-            var candidat = current.DataBoundItem as AppSenSoutenance.Models.Candidat;
-            if (candidat == null) return;
-
-            txtNomCandidat.Text = candidat.NomUtilisateur ?? "";
-            txtPrenomCandidat.Text = candidat.PrenomUtilisateur ?? "";
-            txtEmailCandidat.Text = candidat.EmailUtilisateur ?? "";
-            txtTelCandidat.Text = candidat.TelUtilisateur ?? "";
-            txtMDPCandidat.Text = candidat.MotDePasse ?? "";
-            txtMatricule.Text = candidat.MatriculeCandidat ?? "";
+            txtNomCandidat.Text = current.Cells["Nom"].Value?.ToString() ?? "";
+            txtPrenomCandidat.Text = current.Cells["Prenom"].Value?.ToString() ?? "";
+            txtEmailCandidat.Text = current.Cells["Email"].Value?.ToString() ?? "";
+            txtTelCandidat.Text = current.Cells["Telephone"].Value?.ToString() ?? "";
+            txtMatricule.Text = current.Cells["MatriculeCandidat"].Value?.ToString() ?? "";
         }
 
-        
+        private void ConfigurerEffetsBoutons()
+        {
+            btnAdd.MouseEnter += (s, e) => btnAdd.BackColor = Color.FromArgb(39, 174, 96);
+            btnAdd.MouseLeave += (s, e) => btnAdd.BackColor = Color.FromArgb(46, 204, 113);
+
+            btnEdit.MouseEnter += (s, e) => btnEdit.BackColor = Color.FromArgb(41, 128, 185);
+            btnEdit.MouseLeave += (s, e) => btnEdit.BackColor = Color.FromArgb(52, 152, 219);
+
+            btnRemove.MouseEnter += (s, e) => btnRemove.BackColor = Color.FromArgb(192, 57, 43);
+            btnRemove.MouseLeave += (s, e) => btnRemove.BackColor = Color.FromArgb(231, 76, 60);
+
+            btnClose.MouseEnter += (s, e) => btnClose.BackColor = Color.FromArgb(44, 62, 80);
+            btnClose.MouseLeave += (s, e) => btnClose.BackColor = Color.FromArgb(52, 73, 94);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

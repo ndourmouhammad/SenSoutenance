@@ -16,13 +16,14 @@ namespace AppSenSoutenance.Views.Parametre
         public frmDepartement()
         {
             InitializeComponent();
+            ConfigurerEffetsBoutons();
         }
         int idSelectionne = 0;
 
 
         
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAjouter_Click(object sender, EventArgs e)
         {
             using (BdSenSoutenanceContext db = new BdSenSoutenanceContext())
             {
@@ -42,7 +43,13 @@ namespace AppSenSoutenance.Views.Parametre
         {
             using (BdSenSoutenanceContext db = new BdSenSoutenanceContext())
             {
-                dvgDepartement.DataSource = db.Departements.ToList();
+                dvgDepartement.DataSource = db.Departements.Select(d => new {
+                    Id = d.IdDepartement,
+                    Nom = d.LibelleDepartement,
+                    Code = d.Code
+                }).ToList();
+                
+                if (dvgDepartement.Columns["Id"] != null) dvgDepartement.Columns["Id"].Visible = false;
             }
         }
         private void FormDepartement_load(object sender, EventArgs e)
@@ -57,8 +64,8 @@ namespace AppSenSoutenance.Views.Parametre
             {
                 DataGridViewRow row = dvgDepartement.Rows[e.RowIndex];
                 idSelectionne = Convert.ToInt32(row.Cells["Id"].Value);
-                txtNom.Text = row.Cells["NomDepartement"].Value.ToString();
-                txtCode.Text = row.Cells["code"].Value.ToString();
+                txtNom.Text = row.Cells["Nom"].Value.ToString();
+                txtCode.Text = row.Cells["Code"].Value.ToString();
 
             }
         }
@@ -91,7 +98,7 @@ namespace AppSenSoutenance.Views.Parametre
             txtCode.Text = "";
             idSelectionne = 0;
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSupprimer_Click(object sender, EventArgs e)
         {
             using (BdSenSoutenanceContext db = new BdSenSoutenanceContext())
             {
@@ -111,6 +118,25 @@ namespace AppSenSoutenance.Views.Parametre
 
                 }
             }
+        }
+        private void ConfigurerEffetsBoutons()
+        {
+            btnAjouter.MouseEnter += (s, e) => btnAjouter.BackColor = Color.FromArgb(39, 174, 96);
+            btnAjouter.MouseLeave += (s, e) => btnAjouter.BackColor = Color.FromArgb(46, 204, 113);
+
+            btnModifier.MouseEnter += (s, e) => btnModifier.BackColor = Color.FromArgb(41, 128, 185);
+            btnModifier.MouseLeave += (s, e) => btnModifier.BackColor = Color.FromArgb(52, 152, 219);
+
+            btnSupprimer.MouseEnter += (s, e) => btnSupprimer.BackColor = Color.FromArgb(192, 57, 43);
+            btnSupprimer.MouseLeave += (s, e) => btnSupprimer.BackColor = Color.FromArgb(231, 76, 60);
+
+            btnClose.MouseEnter += (s, e) => btnClose.BackColor = Color.FromArgb(44, 62, 80);
+            btnClose.MouseLeave += (s, e) => btnClose.BackColor = Color.FromArgb(52, 73, 94);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

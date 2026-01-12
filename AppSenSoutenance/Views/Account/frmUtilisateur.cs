@@ -18,6 +18,7 @@ namespace AppSenSoutenance.Views.Account
         {
             InitializeComponent();
             ConfigureLayout();
+            ConfigurerEffetsBoutons();
         }
 
         /// <summary>
@@ -337,6 +338,40 @@ namespace AppSenSoutenance.Views.Account
             db.chefDepartements.Remove(chef);
             db.SaveChanges();
             ResetFormChef();
+        }
+        private void ConfigurerEffetsBoutons()
+        {
+            // Candidat
+            btnAdd.MouseEnter += (s, e) => btnAdd.BackColor = Color.FromArgb(39, 174, 96);
+            btnAdd.MouseLeave += (s, e) => btnAdd.BackColor = Color.FromArgb(46, 204, 113);
+            btnEdit.MouseEnter += (s, e) => btnEdit.BackColor = Color.FromArgb(41, 128, 185);
+            btnEdit.MouseLeave += (s, e) => btnEdit.BackColor = Color.FromArgb(52, 152, 219);
+            btnRemove.MouseEnter += (s, e) => btnRemove.BackColor = Color.FromArgb(192, 57, 43);
+            btnRemove.MouseLeave += (s, e) => btnRemove.BackColor = Color.FromArgb(231, 76, 60);
+
+            // Professeur
+            btnPAjouter.MouseEnter += (s, e) => btnPAjouter.BackColor = Color.FromArgb(39, 174, 96);
+            btnPAjouter.MouseLeave += (s, e) => btnPAjouter.BackColor = Color.FromArgb(46, 204, 113);
+            btnPEdit.MouseEnter += (s, e) => btnPEdit.BackColor = Color.FromArgb(41, 128, 185);
+            btnPEdit.MouseLeave += (s, e) => btnPEdit.BackColor = Color.FromArgb(52, 152, 219);
+            btnPDelete.MouseEnter += (s, e) => btnPDelete.BackColor = Color.FromArgb(192, 57, 43);
+            btnPDelete.MouseLeave += (s, e) => btnPDelete.BackColor = Color.FromArgb(231, 76, 60);
+
+            // Chef de projet
+            btnCAjouter.MouseEnter += (s, e) => btnCAjouter.BackColor = Color.FromArgb(39, 174, 96);
+            btnCAjouter.MouseLeave += (s, e) => btnCAjouter.BackColor = Color.FromArgb(46, 204, 113);
+            btnCModifier.MouseEnter += (s, e) => btnCModifier.BackColor = Color.FromArgb(41, 128, 185);
+            btnCModifier.MouseLeave += (s, e) => btnCModifier.BackColor = Color.FromArgb(52, 152, 219);
+            btnCSupprimer.MouseEnter += (s, e) => btnCSupprimer.BackColor = Color.FromArgb(192, 57, 43);
+            btnCSupprimer.MouseLeave += (s, e) => btnCSupprimer.BackColor = Color.FromArgb(231, 76, 60);
+
+            btnClose.MouseEnter += (s, e) => btnClose.BackColor = Color.FromArgb(44, 62, 80);
+            btnClose.MouseLeave += (s, e) => btnClose.BackColor = Color.FromArgb(52, 73, 94);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

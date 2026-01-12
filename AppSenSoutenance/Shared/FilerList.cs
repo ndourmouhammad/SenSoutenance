@@ -63,5 +63,53 @@ namespace AppSenSoutenance.Shared
             }
             return laliste;
         }
+        /// <summary>
+        /// Remplir la liste des mémoires
+        /// </summary>
+        public List<ListItem> FillMemoire()
+        {
+            List<ListItem> laliste = new List<ListItem>();
+            var listes = db.memoires.ToList();
+            laliste.Add(new ListItem
+            {
+                Value = "0",
+                Text = "Selectionner"
+            });
+
+            foreach (var t in listes)
+            {
+                var item = new ListItem
+                {
+                    Value = t.IdMemoire.ToString(),
+                    Text = t.SujetMemoire
+                };
+                laliste.Add(item);
+            }
+            return laliste;
+        }
+        /// <summary>
+        /// Remplir la liste des départements
+        /// </summary>
+        public List<ListItem> FillDepartement()
+        {
+            List<ListItem> laliste = new List<ListItem>();
+            var listes = db.Departements.ToList();
+            laliste.Add(new ListItem
+            {
+                Value = "0",
+                Text = "Selectionner"
+            });
+
+            foreach (var t in listes)
+            {
+                var item = new ListItem
+                {
+                    Value = t.IdDepartement.ToString(),
+                    Text = t.LibelleDepartement
+                };
+                laliste.Add(item);
+            }
+            return laliste;
+        }
     }
 }

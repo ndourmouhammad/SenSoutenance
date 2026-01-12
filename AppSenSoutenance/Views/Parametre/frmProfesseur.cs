@@ -17,6 +17,7 @@ namespace AppSenSoutenance.Views.Parametre
         {
             InitializeComponent();
             ConfigureLayout();
+            ConfigurerEffetsBoutons();
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace AppSenSoutenance.Views.Parametre
         /// </summary>
         private void frmProfesseur_Load(object sender, EventArgs e)
         {
-            dgProfesseur.DataSource = db.professeurs.ToList();
+            effacer();
         }
 
         /// <summary>
@@ -65,7 +66,17 @@ namespace AppSenSoutenance.Views.Parametre
             txtTelProfesseur.Clear();
             txtMDPProfesseur.Clear();
             txtSpecialite.Clear();
-            dgProfesseur.DataSource = db.professeurs.ToList();
+            dgProfesseur.DataSource = db.professeurs.Select(p => new {
+                Id = p.IdUtilisateur,
+                Prenom = p.PrenomUtilisateur,
+                Nom = p.NomUtilisateur,
+                Email = p.EmailUtilisateur,
+                Telephone = p.TelUtilisateur,
+                Specialite = p.SpecialiteProfesseur
+            }).ToList();
+
+            if (dgProfesseur.Columns["Id"] != null) dgProfesseur.Columns["Id"].Visible = false;
+
             txtNomProfesseur.Focus();
         }
 
@@ -98,16 +109,12 @@ namespace AppSenSoutenance.Views.Parametre
         {
             var current = dgProfesseur.CurrentRow;
             if (current == null) return;
-            var bound = current.DataBoundItem as AppSenSoutenance.Models.Professeur;
-            if (bound == null) return;
 
-            txtNomProfesseur.Text = bound.NomUtilisateur;
-            txtPrenomProfesseur.Text = bound.PrenomUtilisateur;
-            txtEmailProfesseur.Text = bound.EmailUtilisateur;
-            txtTelProfesseur.Text = bound.TelUtilisateur;
-            txtMDPProfesseur.Text = bound.MotDePasse;
-            txtSpecialite.Text = bound.SpecialiteProfesseur;
-
+            txtNomProfesseur.Text = current.Cells["Nom"].Value?.ToString() ?? "";
+            txtPrenomProfesseur.Text = current.Cells["Prenom"].Value?.ToString() ?? "";
+            txtEmailProfesseur.Text = current.Cells["Email"].Value?.ToString() ?? "";
+            txtTelProfesseur.Text = current.Cells["Telephone"].Value?.ToString() ?? "";
+            txtSpecialite.Text = current.Cells["Specialite"].Value?.ToString() ?? "";
         }
 
         /// <summary>
@@ -118,9 +125,8 @@ namespace AppSenSoutenance.Views.Parametre
         {
             var current = dgProfesseur.CurrentRow;
             if (current == null) return;
-            var bound = current.DataBoundItem as AppSenSoutenance.Models.Professeur;
-            if (bound == null) return;
-            var professeur = db.professeurs.Find(bound.IdUtilisateur);
+            int id = (int)current.Cells["Id"].Value;
+            var professeur = db.professeurs.Find(id);
             if (professeur == null)
             {
                 MessageBox.Show("Professeur introuvable.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -140,10 +146,9 @@ namespace AppSenSoutenance.Views.Parametre
         {
             var current = dgProfesseur.CurrentRow;
             if (current == null) return;
-            var bound = current.DataBoundItem as AppSenSoutenance.Models.Professeur;
-            if (bound == null) return;
+            int id = (int)current.Cells["Id"].Value;
 
-            var professeur = db.professeurs.Find(bound.IdUtilisateur);
+            var professeur = db.professeurs.Find(id);
             if (professeur == null)
             {
                 MessageBox.Show("Professeur introuvable.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -160,6 +165,24 @@ namespace AppSenSoutenance.Views.Parametre
             effacer();
         }
 
-        
+        private void ConfigurerEffetsBoutons()
+        {
+            btnAdd.MouseEnter += (s, e) => btnAdd.BackColor = Color.FromArgb(39, 174, 96);
+            btnAdd.MouseLeave += (s, e) => btnAdd.BackColor = Color.FromArgb(46, 204, 113);
+
+            btnEdit.MouseEnter += (s, e) => btnEdit.BackColor = Color.FromArgb(41, 128, 185);
+            btnEdit.MouseLeave += (s, e) => btnEdit.BackColor = Color.FromArgb(52, 152, 219);
+
+            btnRemove.MouseEnter += (s, e) => btnRemove.BackColor = Color.FromArgb(192, 57, 43);
+            btnRemove.MouseLeave += (s, e) => btnRemove.BackColor = Color.FromArgb(231, 76, 60);
+
+            btnClose.MouseEnter += (s, e) => btnClose.BackColor = Color.FromArgb(44, 62, 80);
+            btnClose.MouseLeave += (s, e) => btnClose.BackColor = Color.FromArgb(52, 73, 94);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

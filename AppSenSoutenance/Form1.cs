@@ -30,10 +30,7 @@ namespace AppSenSoutenance
             string password = txtMotDePasse.Text.Trim();
 
             // Recherche de l'utilisateur (tous types)
-            Utilisateur utilisateur =
-                (Utilisateur)db.candidats.FirstOrDefault(u => u.EmailUtilisateur == email)
-                ?? (Utilisateur)db.professeurs.FirstOrDefault(u => u.EmailUtilisateur == email)
-                ?? (Utilisateur)db.chefDepartements.FirstOrDefault(u => u.EmailUtilisateur == email);
+            Utilisateur utilisateur = db.utilisateurs.FirstOrDefault(u => u.EmailUtilisateur == email);
 
             if (utilisateur == null)
             {
@@ -48,19 +45,23 @@ namespace AppSenSoutenance
                 hashInput = Shared.Crypted.GetMd5Hash(md5, password);
             }
 
-            // 🔐 COMPARAISON OBLIGATOIRE
+            // 🔐 COMPARAISON
             if (!string.Equals(hashInput, utilisateur.MotDePasse, StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Email ou mot de passe incorrect");
                 return;
             }
 
-            // ✅ Connexion réussie
-            MessageBox.Show("Connexion réussie");
+            // Déterminer le profil
+            string profil = "Inconnu";
+            if (utilisateur is Admin) profil = "Admin";
+            else if (utilisateur is ChefDepartement) profil = "ChefDepartement";
+            else if (utilisateur is Professeur) profil = "Professeur";
+            else if (utilisateur is Candidat) profil = "Candidat";
 
+            // ✅ Accès
             frmMDI mdi = new frmMDI();
-            // mdi.profil = utilisateur.GetType().Name; // Candidat / Professeur / ChefDepartement
-            mdi.profil = "Admin"; // si on veut tester les fonctionnalités admin
+            mdi.profil = profil;
             mdi.Show();
             this.Hide();
         }
@@ -72,6 +73,11 @@ namespace AppSenSoutenance
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmConnexion_Load(object sender, EventArgs e)
         {
 
         }

@@ -14,7 +14,7 @@ namespace AppSenSoutenance.Models
         
         public BdSenSoutenanceContext() : base("connBdSenSoutenance")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<BdSenSoutenanceContext>());
+            Database.SetInitializer<BdSenSoutenanceContext>(null);
 
         }
 
