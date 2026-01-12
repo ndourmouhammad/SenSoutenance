@@ -69,7 +69,7 @@ namespace AppSenSoutenance.Views.Parametre
             txtNomProfesseur.Focus();
         }
 
-        
+
 
         /// <summary>
         /// Methode pour ajouter un professeur
@@ -159,5 +159,7 @@ namespace AppSenSoutenance.Views.Parametre
             db.SaveChanges();
             effacer();
         }
+
+        
     }
 }

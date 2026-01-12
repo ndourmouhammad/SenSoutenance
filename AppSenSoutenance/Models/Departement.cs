@@ -14,5 +14,6 @@ namespace AppSenSoutenance.Models
 
         [Required, MaxLength(80)]
         public string LibelleDepartement { get; set; }
+        public string Code { get; set; }
     }
 }

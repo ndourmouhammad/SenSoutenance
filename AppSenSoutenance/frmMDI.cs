@@ -72,14 +72,14 @@ namespace AppSenSoutenance
             session.WindowState = FormWindowState.Maximized;
         }
 
-        //private void professeurToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    fermer();
-        //    frmProfesseur professeur = new frmProfesseur();
-        //    professeur.MdiParent = this;
-        //    professeur.Show();
-        //    professeur.WindowState = FormWindowState.Maximized;
-        //}
+        private void professeurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fermer();
+            frmProfesseur professeur = new frmProfesseur();
+            professeur.MdiParent = this;
+            professeur.Show();
+            professeur.WindowState = FormWindowState.Maximized;
+        }
 
         private void frmMDI_Load(object sender, EventArgs e)
         {
@@ -91,7 +91,19 @@ namespace AppSenSoutenance
             Computer myComputer = new Computer();
             this.Width = myComputer.Screen.Bounds.Width;
             this.Height = myComputer.Screen.Bounds.Height;
-            this.Location = new Point(0, 0);  
+            this.Location = new Point(0, 0);
+
+            // Charger le tableau de bord par défaut
+            tableauDeBordToolStripMenuItem_Click(null, null);
+        }
+
+        private void tableauDeBordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fermer();
+            frmDashboard dashboard = new frmDashboard();
+            dashboard.MdiParent = this;
+            dashboard.Show();
+            dashboard.WindowState = FormWindowState.Maximized;
         }
 
         private void memoireToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,23 +133,23 @@ namespace AppSenSoutenance
             departement.WindowState = FormWindowState.Maximized;
         }
 
-        //private void candidatToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    fermer();
-        //    frmCandidat candidat = new frmCandidat();
-        //    candidat.MdiParent = this;
-        //    candidat.Show();
-        //    candidat.WindowState = FormWindowState.Maximized;
-        //}
+        private void candidatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fermer();
+            frmCandidat candidat = new frmCandidat();
+            candidat.MdiParent = this;
+            candidat.Show();
+            candidat.WindowState = FormWindowState.Maximized;
+        }
 
-        //private void chefToolStripMenuItem_Click(object sender, EventArgs e)
-        //{
-        //    fermer();
-        //    frmChefDepartement chefDepartement = new frmChefDepartement();
-        //    chefDepartement.MdiParent = this;
-        //    chefDepartement.Show();
-        //    chefDepartement.WindowState = FormWindowState.Maximized;
-        //}
+        private void chefToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fermer();
+            frmChefDepartement chefDepartement = new frmChefDepartement();
+            chefDepartement.MdiParent = this;
+            chefDepartement.Show();
+            chefDepartement.WindowState = FormWindowState.Maximized;
+        }
 
         private void sujetToolStripMenuItem_Click(object sender, EventArgs e)
         {

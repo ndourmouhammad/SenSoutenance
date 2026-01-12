@@ -13,6 +13,8 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+
+
 # Mono auto generated files
 mono_crash.*
 
@@ -358,6 +360,10 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
+.vs
+.VS
+.vscode
+.codeium
+.codeium/*
 # Fody - auto-generated XML schema
 FodyWeavers.xsd

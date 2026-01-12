@@ -22,8 +22,8 @@ namespace AppSenSoutenance.Shared
             List<ListItem> laliste = new List<ListItem>();
             var listes = db.anneeAcademiques.ToList();
             laliste.Add(new ListItem
-             {
-                Value = null,
+            {
+                Value = "0",
                 Text = "Selectionner"
             });
 
@@ -37,7 +37,31 @@ namespace AppSenSoutenance.Shared
                 laliste.Add(item);
             }
             return laliste;
+        }
 
+        /// <summary>
+        /// Remplir la liste des sessions
+        /// </summary>
+        public List<ListItem> FillSession()
+        {
+            List<ListItem> laliste = new List<ListItem>();
+            var listes = db.sessions.ToList();
+            laliste.Add(new ListItem
+            {
+                Value = "0",
+                Text = "Selectionner"
+            });
+
+            foreach (var t in listes)
+            {
+                var item = new ListItem
+                {
+                    Value = t.IdSession.ToString(),
+                    Text = t.LibelleSession.ToString()
+                };
+                laliste.Add(item);
+            }
+            return laliste;
         }
     }
 }
