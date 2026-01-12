@@ -62,7 +62,7 @@
             this.dgAnneeAcademique.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -72,7 +72,7 @@
             this.dgAnneeAcademique.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(174)))), ((int)(((byte)(214)))), ((int)(((byte)(241)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -96,7 +96,7 @@
             this.txtAnneeAcademiqueVal.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtAnneeAcademiqueVal.Location = new System.Drawing.Point(15, 120);
             this.txtAnneeAcademiqueVal.Name = "txtAnneeAcademiqueVal";
-            this.txtAnneeAcademiqueVal.Size = new System.Drawing.Size(270, 25);
+            this.txtAnneeAcademiqueVal.Size = new System.Drawing.Size(270, 43);
             this.txtAnneeAcademiqueVal.TabIndex = 2;
             // 
             // btnAdd
@@ -169,7 +169,7 @@
             this.txtLibelleAnneeAcademique.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtLibelleAnneeAcademique.Location = new System.Drawing.Point(15, 50);
             this.txtLibelleAnneeAcademique.Name = "txtLibelleAnneeAcademique";
-            this.txtLibelleAnneeAcademique.Size = new System.Drawing.Size(270, 25);
+            this.txtLibelleAnneeAcademique.Size = new System.Drawing.Size(270, 43);
             this.txtLibelleAnneeAcademique.TabIndex = 1;
             // 
             // label1
@@ -179,7 +179,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label1.Location = new System.Drawing.Point(12, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 15);
+            this.label1.Size = new System.Drawing.Size(221, 32);
             this.label1.TabIndex = 7;
             this.label1.Text = "Valeur numérique *";
             // 
@@ -190,7 +190,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label2.Location = new System.Drawing.Point(12, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 15);
+            this.label2.Size = new System.Drawing.Size(240, 32);
             this.label2.TabIndex = 8;
             this.label2.Text = "Année Académique *";
             // 
@@ -211,7 +211,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(12, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(360, 32);
+            this.lblTitle.Size = new System.Drawing.Size(687, 65);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "📅 Gestion des Années Acad.";
             // 
@@ -232,7 +232,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnClose);
             this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Controls.Add(this.btnEdit);
             this.groupBox2.Controls.Add(this.btnRemove);
@@ -254,7 +253,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(15, 195);
+            this.btnClose.Location = new System.Drawing.Point(23, 520);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(270, 35);
             this.btnClose.TabIndex = 7;
@@ -264,11 +263,13 @@
             // 
             // frmAnneeAcademique
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
             this.ClientSize = new System.Drawing.Size(904, 666);
             this.ControlBox = false;
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
@@ -278,7 +279,6 @@
             this.Name = "frmAnneeAcademique";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion des Années Académiques";
-            this.AutoScroll = true;
             this.Load += new System.EventHandler(this.frmAnneeAcademique_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgAnneeAcademique)).EndInit();
             this.panel1.ResumeLayout(false);

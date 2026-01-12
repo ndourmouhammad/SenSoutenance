@@ -115,16 +115,40 @@ namespace AppSenSoutenance.Views.Account
         /// <param name="e"></param>
         private void frmUtilisateur_Load(object sender, EventArgs e)
         {
-            dgUtilisateurs .DataSource = db.utilisateurs.Select(
-                a => new
-                {
-                    a.IdUtilisateur,
-                    a.NomUtilisateur,
-                    a.PrenomUtilisateur,
-                    a.EmailUtilisateur,
-                    a.TelUtilisateur,
-                }).ToList();
+            ChargerSelonOnglet();
         }
+
+        private void tabUtilisateurs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChargerSelonOnglet();
+        }
+
+        private void ChargerSelonOnglet()
+        {
+            if (tabUtilisateurs.SelectedIndex == 0) // Candidat
+            {
+                ResetForm();
+                btnSelect.Visible = true;
+                btnSelectP.Visible = false;
+                btnSelectC.Visible = false;
+            }
+            else if (tabUtilisateurs.SelectedIndex == 1) // Professeur
+            {
+                ResetFormProfesseur();
+                btnSelect.Visible = false;
+                btnSelectP.Visible = true;
+                btnSelectC.Visible = false;
+            }
+            else if (tabUtilisateurs.SelectedIndex == 2) // Chef
+            {
+                ResetFormChef();
+                btnSelect.Visible = false;
+                btnSelectP.Visible = false;
+                btnSelectC.Visible = true;
+            }
+        }
+
+
 
         /// <summary>
         /// Modifier un utilisateur

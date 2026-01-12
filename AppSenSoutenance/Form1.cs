@@ -61,7 +61,8 @@ namespace AppSenSoutenance
 
             // ✅ Accès
             frmMDI mdi = new frmMDI();
-            mdi.profil = profil;
+            // mdi.profil = profil;
+            mdi.profil = "Admin";
             mdi.Show();
             this.Hide();
         }

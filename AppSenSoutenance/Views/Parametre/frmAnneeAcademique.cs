@@ -27,6 +27,7 @@ namespace AppSenSoutenance.Views.Parametre
         {
             try
             {
+                btnSelect.Visible = true;
                 RafraichirInterface();
             }
             catch (Exception ex)
@@ -43,6 +44,7 @@ namespace AppSenSoutenance.Views.Parametre
                 Libelle = a.LibelleAnneeAcademique,
                 Valeur = a.AnneeAcademiqueVal
             }).ToList();
+
             ConfigurerDataGridView();
         }
 
