@@ -58,7 +58,7 @@
             this.label2.Size = new System.Drawing.Size(57, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Code";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtNom
             // 
@@ -66,7 +66,7 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(304, 22);
             this.txtNom.TabIndex = 2;
-            this.txtNom.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            //this.txtNom.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtCode
             // 
@@ -74,7 +74,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(304, 22);
             this.txtCode.TabIndex = 3;
-            this.txtCode.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            //this.txtCode.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // dvgDepartement
             // 

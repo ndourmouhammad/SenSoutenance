@@ -130,10 +130,6 @@
     <Compile Include="frmMDI.Designer.cs">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202601101304593_MiseAJourDepartements.cs" />
-    <Compile Include="Migrations\202601101304593_MiseAJourDepartements.Designer.cs">
-      <DependentUpon>202601101304593_MiseAJourDepartements.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\AnneeAcademique.cs" />
@@ -222,9 +218,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202601101304593_MiseAJourDepartements.resx">
-      <DependentUpon>202601101304593_MiseAJourDepartements.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
