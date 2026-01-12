@@ -66,12 +66,31 @@ namespace AppSenSoutenance.Views.Account
             }
         }
 
+
+
+
+        /// <summary>
+        /// Réinitialiser le formulaire candidat après une opération CRUD
+        /// </summary>
+        private void ResetForm()
+        {
+            dgUtilisateurs.DataSource = db.candidats.Select(
+                a=> new { a.IdUtilisateur, a.NomUtilisateur, a.PrenomUtilisateur, a.EmailUtilisateur, 
+                    a.TelUtilisateur }).ToList();
+            txtNom.Clear();
+            txtPrenom.Clear();
+            txtTel.Clear();
+            txtEmail.Clear();
+            txtMatricule.Clear();
+            txtNom.Focus();
+        }
+
         /// <summary>
         /// Ajouter un utilisateur de type candidat
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnAdd_Click_1(object sender, EventArgs e)
         {
             Candidat candidat = new Candidat();
             candidat.NomUtilisateur = txtNom.Text;
@@ -89,36 +108,235 @@ namespace AppSenSoutenance.Views.Account
         }
 
         /// <summary>
-        /// Réinitialiser le formulaire
+        /// Chargement du formulaire : on alimente le DataGridView avec la liste des utilisateurs
         /// </summary>
-        private void ResetForm()
-        {
-            dgUtilisateurs.DataSource = db.candidats.Select(
-                a=> new { a.IdUtilisateur, a.NomUtilisateur, a.PrenomUtilisateur, a.EmailUtilisateur, 
-                    a.TelUtilisateur }).ToList();
-            txtNom.Clear();
-            txtPrenom.Clear();
-            txtTel.Clear();
-            txtEmail.Clear();
-            txtMatricule.Clear();
-            txtNom.Focus();
-        }
-
-        private void tabCandidat_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmUtilisateur_Load(object sender, EventArgs e)
         {
-
+            dgUtilisateurs .DataSource = db.utilisateurs.Select(
+                a => new
+                {
+                    a.IdUtilisateur,
+                    a.NomUtilisateur,
+                    a.PrenomUtilisateur,
+                    a.EmailUtilisateur,
+                    a.TelUtilisateur,
+                }).ToList();
         }
 
-        private void tabProfesseur_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Modifier un utilisateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            int? id = int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString());
+            Candidat candidat = db.candidats.Find(id);
+            candidat.NomUtilisateur = txtNom.Text;
+            candidat.PrenomUtilisateur = txtPrenom.Text;
+            candidat.TelUtilisateur = txtTel.Text;
+            candidat.EmailUtilisateur = txtEmail.Text;
+            candidat.MatriculeCandidat = txtMatricule.Text;
+            db.SaveChanges();
+            ResetForm();
         }
 
-        
+        /// <summary>
+        /// sélectionner un utilisateur dans la grille pour modification
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            txtNom.Text = dgUtilisateurs.CurrentRow.Cells[1].Value.ToString();
+            txtPrenom.Text = dgUtilisateurs.CurrentRow.Cells[2].Value.ToString();
+            txtEmail.Text = dgUtilisateurs.CurrentRow.Cells[3].Value.ToString();
+            txtTel.Text = dgUtilisateurs.CurrentRow.Cells[4].Value.ToString();
+            txtMatricule.Text = db.candidats.Find(
+                int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString())
+                ).MatriculeCandidat;
+        }
+
+        /// <summary>
+        /// Supprimer un utilisateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            int? id = int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString());
+            Candidat candidat = db.candidats.Find(id);
+            db.candidats.Remove(candidat);
+            db.SaveChanges();
+            ResetForm();
+        }
+
+        private void ResetFormProfesseur()
+        {
+            dgUtilisateurs.DataSource = db.professeurs.Select(
+                a => new
+                {
+                    a.IdUtilisateur,
+                    a.NomUtilisateur,
+                    a.PrenomUtilisateur,
+                    a.EmailUtilisateur,
+                    a.TelUtilisateur
+                }).ToList();
+            txtPNom.Clear();
+            txtPPrenom.Clear();
+            txtPTel.Clear();
+            txtPEmail.Clear();
+            txtPSpecialite.Clear();
+            txtPNom.Focus();
+        }
+
+        /// <summary>
+        /// Ajouter un utilisateur de type professeur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPAjouter_Click(object sender, EventArgs e)
+        {
+            Professeur professeur = new Professeur();
+            professeur.NomUtilisateur = txtPNom.Text;
+            professeur.PrenomUtilisateur = txtPPrenom.Text;
+            professeur.TelUtilisateur = txtPTel.Text;
+            professeur.EmailUtilisateur = txtPEmail.Text;
+            professeur.SpecialiteProfesseur = txtPSpecialite.Text;
+            using (MD5 md5Hash = MD5.Create())
+            {
+                professeur.MotDePasse = Shared.Crypted.GetMd5Hash(md5Hash, "passer123");
+            }
+            db.professeurs.Add(professeur);
+            db.SaveChanges();
+            ResetFormProfesseur();
+        }
+
+        /// <summary>
+        /// Modifier un utilisateur de type professeur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPEdit_Click(object sender, EventArgs e)
+        {
+            int? id = int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString());
+            Professeur professeur = db.professeurs.Find(id);
+            professeur.NomUtilisateur = txtPNom.Text;
+            professeur.PrenomUtilisateur = txtPPrenom.Text;
+            professeur.TelUtilisateur = txtPTel.Text;
+            professeur.EmailUtilisateur = txtPEmail.Text;
+            professeur.SpecialiteProfesseur = txtPSpecialite.Text;
+            db.SaveChanges();
+            ResetFormProfesseur();
+        }
+
+        /// <summary>
+        /// Sélectionner un utilisateur de type professeur dans la grille pour modification
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSelectP_Click(object sender, EventArgs e)
+        {
+            txtPNom.Text = dgUtilisateurs.CurrentRow.Cells[1].Value.ToString();
+            txtPPrenom.Text = dgUtilisateurs.CurrentRow.Cells[2].Value.ToString();
+            txtPEmail.Text = dgUtilisateurs.CurrentRow.Cells[3].Value.ToString();
+            txtPTel.Text = dgUtilisateurs.CurrentRow.Cells[4].Value.ToString();
+            txtPSpecialite.Text = db.professeurs.Find(
+                int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString())
+                ).SpecialiteProfesseur;
+        }
+
+        /// <summary>
+        /// Supprimer un utilisateur de type professeur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPDelete_Click(object sender, EventArgs e)
+        {
+            int? id = int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString());
+            Professeur professeur = db.professeurs.Find(id);
+            db.professeurs.Remove(professeur);
+            db.SaveChanges();
+            ResetFormProfesseur();
+        }
+
+        /// <summary>
+        /// Ajouter un utilisateur de type chef de département
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCAjouter_Click(object sender, EventArgs e)
+        {
+            ChefDepartement chef = new ChefDepartement();
+            chef.NomUtilisateur = txtCNom.Text;
+            chef.PrenomUtilisateur = txtCPrenom.Text;
+            chef.TelUtilisateur = txtCTel.Text;
+            chef.EmailUtilisateur = txtCEmail.Text;
+            chef.IdDepartement = int.Parse( txtCDepartement.Text);
+            using (MD5 md5Hash = MD5.Create())
+            {
+                chef.MotDePasse = Shared.Crypted.GetMd5Hash(md5Hash, "passer123");
+            }
+            db.chefDepartements.Add(chef);
+            db.SaveChanges();
+            ResetFormChef();
+        }
+
+        /// <summary>
+        /// Réinitialiser le formulaire chef de département après une opération CRUD
+        /// </summary>
+        private void ResetFormChef()
+        {
+            dgUtilisateurs.DataSource = db.chefDepartements.Select(
+                a => new
+                {
+                    a.IdUtilisateur,
+                    a.NomUtilisateur,
+                    a.PrenomUtilisateur,
+                    a.EmailUtilisateur,
+                    a.TelUtilisateur
+                }).ToList();
+            txtCNom.Clear();
+            txtCPrenom.Clear();
+            txtCTel.Clear();
+            txtCEmail.Clear();
+            txtCDepartement.Clear();
+            txtCNom.Focus();
+        }
+
+        private void btnSelectC_Click(object sender, EventArgs e)
+        {
+            txtCNom .Text = dgUtilisateurs.CurrentRow.Cells[1].Value.ToString();
+            txtCPrenom.Text = dgUtilisateurs.CurrentRow.Cells[2].Value.ToString();
+            txtCEmail.Text = dgUtilisateurs.CurrentRow.Cells[3].Value.ToString();
+            txtCTel.Text = dgUtilisateurs.CurrentRow.Cells[4].Value.ToString();
+            txtCDepartement.Text = db.chefDepartements.Find(
+                int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString())
+                ).IdDepartement.ToString();
+        }
+
+        private void btnCModifier_Click(object sender, EventArgs e)
+        {
+            int? id = int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString());
+            ChefDepartement chef = db.chefDepartements.Find(id);
+            chef.NomUtilisateur = txtCNom.Text;
+            chef.PrenomUtilisateur = txtCPrenom.Text;
+            chef.TelUtilisateur = txtCTel.Text;
+            chef.EmailUtilisateur = txtCEmail.Text;
+            chef.IdDepartement = int.Parse(txtCDepartement.Text);
+            db.SaveChanges();
+            ResetFormChef();
+        }
+
+        private void btnCSupprimer_Click(object sender, EventArgs e)
+        {
+            int? id = int.Parse(dgUtilisateurs.CurrentRow.Cells[0].Value.ToString());
+            ChefDepartement chef = db.chefDepartements.Find(id);
+            db.chefDepartements.Remove(chef);
+            db.SaveChanges();
+            ResetFormChef();
+        }
     }
 }

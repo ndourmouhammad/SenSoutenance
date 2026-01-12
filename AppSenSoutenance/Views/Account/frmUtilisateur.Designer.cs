@@ -78,6 +78,9 @@
             this.btnCUpdate = new System.Windows.Forms.Button();
             this.btnCAdd = new System.Windows.Forms.Button();
             this.dgUtilisateurs = new System.Windows.Forms.DataGridView();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnSelectP = new System.Windows.Forms.Button();
+            this.btnSelectC = new System.Windows.Forms.Button();
             this.tabUtilisateurs.SuspendLayout();
             this.tabCandidat.SuspendLayout();
             this.tabProfesseur.SuspendLayout();
@@ -100,6 +103,7 @@
             // 
             // tabCandidat
             // 
+            this.tabCandidat.Controls.Add(this.btnSelect);
             this.tabCandidat.Controls.Add(this.btnRemove);
             this.tabCandidat.Controls.Add(this.btnEdit);
             this.tabCandidat.Controls.Add(this.btnAdd);
@@ -120,7 +124,6 @@
             this.tabCandidat.TabIndex = 0;
             this.tabCandidat.Text = "Candidat";
             this.tabCandidat.UseVisualStyleBackColor = true;
-            this.tabCandidat.Click += new System.EventHandler(this.tabCandidat_Click);
             // 
             // btnRemove
             // 
@@ -134,6 +137,7 @@
             this.btnRemove.TabIndex = 60;
             this.btnRemove.Text = "&Supprimer";
             this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnEdit
             // 
@@ -147,6 +151,7 @@
             this.btnEdit.TabIndex = 59;
             this.btnEdit.Text = "&Modifier";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -160,6 +165,7 @@
             this.btnAdd.TabIndex = 58;
             this.btnAdd.Text = "&Ajouter";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // txtMatricule
             // 
@@ -243,6 +249,7 @@
             // 
             // tabProfesseur
             // 
+            this.tabProfesseur.Controls.Add(this.btnSelectP);
             this.tabProfesseur.Controls.Add(this.label10);
             this.tabProfesseur.Controls.Add(this.btnPDelete);
             this.tabProfesseur.Controls.Add(this.btnPEdit);
@@ -266,7 +273,6 @@
             this.tabProfesseur.TabIndex = 1;
             this.tabProfesseur.Text = "Professeur";
             this.tabProfesseur.UseVisualStyleBackColor = true;
-            this.tabProfesseur.Click += new System.EventHandler(this.tabProfesseur_Click);
             // 
             // label10
             // 
@@ -289,6 +295,7 @@
             this.btnPDelete.TabIndex = 73;
             this.btnPDelete.Text = "&Supprimer";
             this.btnPDelete.UseVisualStyleBackColor = false;
+            this.btnPDelete.Click += new System.EventHandler(this.btnPDelete_Click);
             // 
             // btnPEdit
             // 
@@ -302,6 +309,7 @@
             this.btnPEdit.TabIndex = 72;
             this.btnPEdit.Text = "&Modifier";
             this.btnPEdit.UseVisualStyleBackColor = false;
+            this.btnPEdit.Click += new System.EventHandler(this.btnPEdit_Click);
             // 
             // btnPAjouter
             // 
@@ -315,6 +323,7 @@
             this.btnPAjouter.TabIndex = 71;
             this.btnPAjouter.Text = "&Ajouter";
             this.btnPAjouter.UseVisualStyleBackColor = false;
+            this.btnPAjouter.Click += new System.EventHandler(this.btnPAjouter_Click);
             // 
             // txtPSpecialite
             // 
@@ -428,6 +437,7 @@
             // 
             // tabChefDeProjet
             // 
+            this.tabChefDeProjet.Controls.Add(this.btnSelectC);
             this.tabChefDeProjet.Controls.Add(this.btnCSupprimer);
             this.tabChefDeProjet.Controls.Add(this.btnCModifier);
             this.tabChefDeProjet.Controls.Add(this.btnCAjouter);
@@ -464,6 +474,7 @@
             this.btnCSupprimer.TabIndex = 73;
             this.btnCSupprimer.Text = "&Supprimer";
             this.btnCSupprimer.UseVisualStyleBackColor = false;
+            this.btnCSupprimer.Click += new System.EventHandler(this.btnCSupprimer_Click);
             // 
             // btnCModifier
             // 
@@ -477,6 +488,7 @@
             this.btnCModifier.TabIndex = 72;
             this.btnCModifier.Text = "&Modifier";
             this.btnCModifier.UseVisualStyleBackColor = false;
+            this.btnCModifier.Click += new System.EventHandler(this.btnCModifier_Click);
             // 
             // btnCAjouter
             // 
@@ -490,6 +502,7 @@
             this.btnCAjouter.TabIndex = 71;
             this.btnCAjouter.Text = "&Ajouter";
             this.btnCAjouter.UseVisualStyleBackColor = false;
+            this.btnCAjouter.Click += new System.EventHandler(this.btnCAjouter_Click);
             // 
             // txtCDepartement
             // 
@@ -623,6 +636,48 @@
             this.dgUtilisateurs.Size = new System.Drawing.Size(663, 540);
             this.dgUtilisateurs.TabIndex = 1;
             // 
+            // btnSelect
+            // 
+            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSelect.ForeColor = System.Drawing.Color.White;
+            this.btnSelect.Location = new System.Drawing.Point(46, 351);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(159, 44);
+            this.btnSelect.TabIndex = 59;
+            this.btnSelect.Text = "&Selectioner";
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnSelectP
+            // 
+            this.btnSelectP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnSelectP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectP.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSelectP.ForeColor = System.Drawing.Color.White;
+            this.btnSelectP.Location = new System.Drawing.Point(40, 351);
+            this.btnSelectP.Name = "btnSelectP";
+            this.btnSelectP.Size = new System.Drawing.Size(159, 44);
+            this.btnSelectP.TabIndex = 75;
+            this.btnSelectP.Text = "&Selectioner";
+            this.btnSelectP.UseVisualStyleBackColor = false;
+            this.btnSelectP.Click += new System.EventHandler(this.btnSelectP_Click);
+            // 
+            // btnSelectC
+            // 
+            this.btnSelectC.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnSelectC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelectC.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnSelectC.ForeColor = System.Drawing.Color.White;
+            this.btnSelectC.Location = new System.Drawing.Point(40, 351);
+            this.btnSelectC.Name = "btnSelectC";
+            this.btnSelectC.Size = new System.Drawing.Size(159, 44);
+            this.btnSelectC.TabIndex = 76;
+            this.btnSelectC.Text = "&Selectioner";
+            this.btnSelectC.UseVisualStyleBackColor = false;
+            this.btnSelectC.Click += new System.EventHandler(this.btnSelectC_Click);
+            // 
             // frmUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
@@ -701,5 +756,8 @@
         private System.Windows.Forms.TextBox txtNom;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button btnSelectP;
+        private System.Windows.Forms.Button btnSelectC;
     }
 }
