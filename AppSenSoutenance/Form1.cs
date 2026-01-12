@@ -70,5 +70,10 @@ namespace AppSenSoutenance
         {
             Application.Exit();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
