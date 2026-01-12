@@ -17,7 +17,7 @@ namespace AppSenSoutenance
         {
             this.Text = "Tableau de Bord";
             this.BackColor = Color.FromArgb(240, 242, 245);
-            
+
             // Re-triggering layout on resize to keep cards centered
             this.Resize += (s, e) => CenterCards();
         }
@@ -27,7 +27,7 @@ namespace AppSenSoutenance
             if (flowLayoutPanel1 != null)
             {
                 int totalWidth = flowLayoutPanel1.Width;
-                // Simple centering logic could be added here if needed, 
+                // Simple centering logic could be added here if needed,
                 // but FlowLayoutPanel handles wrapping well.
             }
         }
@@ -39,7 +39,7 @@ namespace AppSenSoutenance
             card.BackColor = Color.White;
             card.Margin = new Padding(15);
             card.Cursor = Cursors.Hand;
-            
+
             // Border/Shadow simulation
             card.Paint += (s, e) => {
                 ControlPaint.DrawBorder(e.Graphics, card.ClientRectangle, Color.LightGray, ButtonBorderStyle.Solid);
@@ -105,17 +105,9 @@ namespace AppSenSoutenance
         {
             if (this.MdiParent != null)
             {
-                // Close other children except dashboard? 
-                // Or just show this one. The user's MDI has a 'fermer()' method.
-                // We should probably call the MDI's opening logic.
-                
-                // For now, let's just trigger the MDI menu items if we can, 
-                // or replicate the logic.
-                
                 f.MdiParent = this.MdiParent;
                 f.Show();
                 f.WindowState = FormWindowState.Maximized;
-                // Note: We might want to close the dashboard or just hide it.
             }
         }
     }
