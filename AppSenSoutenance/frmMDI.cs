@@ -37,11 +37,16 @@ namespace AppSenSoutenance
             }
         }
 
+        /// <summary>
+        /// Methode permettant de se deconnecter de l'application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void seDeconnecterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmConnexion connexion = new frmConnexion();
             connexion.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
