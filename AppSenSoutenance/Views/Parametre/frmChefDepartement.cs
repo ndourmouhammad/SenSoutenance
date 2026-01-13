@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace AppSenSoutenance.Views.Parametre
 {
-    public partial class frmChefDepartement : Form
+    public partial class frmDepartement : Form
     {
         BdSenSoutenanceContext db = new BdSenSoutenanceContext();
         FilerList filler = new FilerList();
 
-        public frmChefDepartement()
+        public frmDepartement()
         {
             InitializeComponent();
             ConfigurerEffetsBoutons();
@@ -39,14 +39,14 @@ namespace AppSenSoutenance.Views.Parametre
 
         private void Effacer()
         {
-            txtNomChefDepartement.Clear();
-            txtPrenomChefDepartement.Clear();
-            txtEmailChefDepartement.Clear();
-            txtTelChefDepartement.Clear();
-            txtMDPChefDepartement.Clear();
-            txtMatriculeChefDepartement.Clear();
+            txtNom.Clear();
+            txtPrenom.Clear();
+            txtEmail.Clear();
+            txtTel.Clear();
+            txtMDP.Clear();
+            txtMatricule.Clear();
             cbbDepartement.SelectedIndex = 0;
-            txtNomChefDepartement.Focus();
+            txtNom.Focus();
         }
 
        
@@ -65,7 +65,7 @@ namespace AppSenSoutenance.Views.Parametre
 
         private void ActualiserGrid()
         {
-            dgChefDepartement.DataSource = db.chefDepartements.Select(c => new
+            dvgChefDepartement.DataSource = db.chefDepartements.Select(c => new
             {
                 Id = c.IdUtilisateur,
                 Prenom = c.PrenomUtilisateur,
@@ -105,12 +105,12 @@ namespace AppSenSoutenance.Views.Parametre
 
             ChefDepartement chefDepartement = new ChefDepartement
             {
-                NomUtilisateur = txtNomChefDepartement.Text,
-                PrenomUtilisateur = txtPrenomChefDepartement.Text,
-                EmailUtilisateur = txtEmailChefDepartement.Text,
+                NomUtilisateur = txtNom.Text,
+                PrenomUtilisateur = txtPrenom.Text,
+                EmailUtilisateur = txtEmail.Text,
                 TelUtilisateur = txtTelChefDepartement.Text,
-                MotDePasse = HashMotDePasse(txtMDPChefDepartement.Text),
-                MatriculeChefDepartement = txtMatriculeChefDepartement.Text,
+                MotDePasse = HashMotDePasse(txtMDP.Text),
+                MatriculeChefDepartement = txtMatricule.Text,
                 IdDepartement = (int)cbbDepartement.SelectedValue
             };
 
@@ -140,9 +140,9 @@ namespace AppSenSoutenance.Views.Parametre
         
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dgChefDepartement.CurrentRow == null) return;
+            if (dvgChefDepartement.CurrentRow == null) return;
 
-            int id = (int)dgChefDepartement.CurrentRow.Cells["Id"].Value;
+            int id = (int)dvgChefDepartement.CurrentRow.Cells["Id"].Value;
             var chefDepartement = db.chefDepartements.Find(id);
 
             if (chefDepartement == null)
@@ -152,11 +152,11 @@ namespace AppSenSoutenance.Views.Parametre
                 return;
             }
 
-            chefDepartement.NomUtilisateur = txtNomChefDepartement.Text;
-            chefDepartement.PrenomUtilisateur = txtPrenomChefDepartement.Text;
-            chefDepartement.EmailUtilisateur = txtEmailChefDepartement.Text;
-            chefDepartement.TelUtilisateur = txtTelChefDepartement.Text;
-            chefDepartement.MatriculeChefDepartement = txtMatriculeChefDepartement.Text;
+            chefDepartement.NomUtilisateur = txtNom.Text;
+            chefDepartement.PrenomUtilisateur = txtPrenom.Text;
+            chefDepartement.EmailUtilisateur = txtEmail.Text;
+            chefDepartement.TelUtilisateur = txtTel.Text;
+            chefDepartement.MatriculeChefDepartement = txtMatricule.Text;
             chefDepartement.IdDepartement = (int)cbbDepartement.SelectedValue;
 
             db.SaveChanges();
@@ -171,7 +171,7 @@ namespace AppSenSoutenance.Views.Parametre
         
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (dgChefDepartement.CurrentRow == null) return;
+            if (dvgChefDepartement.CurrentRow == null) return;
 
             int id = (int)dgChefDepartement.CurrentRow.Cells["Id"].Value;
             var chefDepartement = db.chefDepartements.Find(id);
@@ -202,6 +202,46 @@ namespace AppSenSoutenance.Views.Parametre
         {
             btnAdd.MouseEnter += (s, e) => btnAdd.BackColor = Color.FromArgb(39, 174, 96);
             btnAdd.MouseLeave += (s, e) => btnAdd.BackColor = Color.FromArgb(46, 204, 113);
+        }
+
+        private void frmChefDepartement_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatricule_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNomCandidat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMDPCandidat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmailCandidat_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
