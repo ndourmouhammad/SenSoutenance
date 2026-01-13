@@ -1,4 +1,4 @@
-﻿namespace AppSenSoutenance.Views.Parametre
+namespace AppSenSoutenance.Views.Parametre
 {
     partial class frmDepartement
     {
@@ -293,6 +293,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion des Départements";
             this.Load += new System.EventHandler(this.FormDepartement_load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDepartement_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.dvgDepartement)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
