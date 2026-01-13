@@ -18,6 +18,7 @@ namespace AppSenSoutenance.Views.Parametre
         {
             InitializeComponent();
             ConfigurerEffetsBoutons();
+
         }
 
         #region Événements de chargement
@@ -30,6 +31,7 @@ namespace AppSenSoutenance.Views.Parametre
             try
             {
                 RafraichirInterface();
+                btnSelect.Visible = true;
             }
             catch (Exception ex)
             {

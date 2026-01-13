@@ -243,6 +243,9 @@
     <EmbeddedResource Include="Views\Parametre\frmSession.resx">
       <DependentUpon>frmSession.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Parametre\frmSoutenance.resx">
+      <DependentUpon>frmSoutenance.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
