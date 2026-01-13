@@ -1,13 +1,10 @@
 ﻿using AppSenSoutenance.Models;
 using AppSenSoutenance.Shared;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AppSenSoutenance.Views.Parametre
@@ -23,14 +20,36 @@ namespace AppSenSoutenance.Views.Parametre
             ConfigurerEffetsBoutons();
             this.Load += FrmChefDepartement_Load;
 
-            // Attacher les événements aux boutons
             btnAdd.Click += btnAdd_Click;
             btnEdit.Click += btnEdit_Click;
             btnRemove.Click += btnRemove_Click;
             btnClose.Click += btnClose_Click;
-            dgChef.CellClick += dgChef_CellClick;
+            dgChefDepartement.CellClick += dgChefDepartement_CellClick;
         }
 
+        
+        private string HashMotDePasse(string mdp)
+        {
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(mdp));
+                return Convert.ToBase64String(bytes);
+            }
+        }
+
+        private void Effacer()
+        {
+            txtNomChefDepartement.Clear();
+            txtPrenomChefDepartement.Clear();
+            txtEmailChefDepartement.Clear();
+            txtTelChefDepartement.Clear();
+            txtMDPChefDepartement.Clear();
+            txtMatriculeChefDepartement.Clear();
+            cbbDepartement.SelectedIndex = 0;
+            txtNomChefDepartement.Focus();
+        }
+
+       
         private void FrmChefDepartement_Load(object sender, EventArgs e)
         {
             ChargerDepartements();
@@ -46,51 +65,132 @@ namespace AppSenSoutenance.Views.Parametre
 
         private void ActualiserGrid()
         {
-            dgChef.DataSource = db.chefDepartements.Select(c => new
+            dgChefDepartement.DataSource = db.chefDepartements.Select(c => new
             {
                 Id = c.IdUtilisateur,
                 Prenom = c.PrenomUtilisateur,
                 Nom = c.NomUtilisateur,
                 Email = c.EmailUtilisateur,
                 Telephone = c.TelUtilisateur,
+                Matricule = c.MatriculeChefDepartement,
                 Departement = c.Departement.LibelleDepartement
             }).ToList();
 
-            if (dgChef.Columns["Id"] != null)
-                dgChef.Columns["Id"].Visible = false;
+            if (dgChefDepartement.Columns["Id"] != null)
+                dgChefDepartement.Columns["Id"].Visible = false;
         }
 
-        private void ConfigurerEffetsBoutons()
-        {
-            btnAdd.MouseEnter += (s, e) => btnAdd.BackColor = Color.FromArgb(39, 174, 96);
-            btnAdd.MouseLeave += (s, e) => btnAdd.BackColor = Color.FromArgb(46, 204, 113);
-
-            btnEdit.MouseEnter += (s, e) => btnEdit.BackColor = Color.FromArgb(41, 128, 185);
-            btnEdit.MouseLeave += (s, e) => btnEdit.BackColor = Color.FromArgb(52, 152, 219);
-
-            btnRemove.MouseEnter += (s, e) => btnRemove.BackColor = Color.FromArgb(192, 57, 43);
-            btnRemove.MouseLeave += (s, e) => btnRemove.BackColor = Color.FromArgb(231, 76, 60);
-
-            btnClose.MouseEnter += (s, e) => btnClose.BackColor = Color.FromArgb(44, 62, 80);
-            btnClose.MouseLeave += (s, e) => btnClose.BackColor = Color.FromArgb(52, 73, 94);
-        }
-
+        
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            // Logique d'ajout à implémenter
-            MessageBox.Show("Fonctionnalité d'ajout à implémenter.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (string.IsNullOrWhiteSpace(txtNomChefDepartement.Text) ||
+                string.IsNullOrWhiteSpace(txtPrenomChefDepartement.Text) ||
+                string.IsNullOrWhiteSpace(txtMatriculeChefDepartement.Text) ||
+                string.IsNullOrWhiteSpace(txtMDPChefDepartement.Text))
+            {
+                MessageBox.Show("Veuillez remplir tous les champs obligatoires.",
+                    "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool existe = db.chefDepartements
+                .Any(c => c.MatriculeChefDepartement == txtMatriculeChefDepartement.Text);
+
+            if (existe)
+            {
+                MessageBox.Show("Ce matricule existe déjà.",
+                    "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ChefDepartement chefDepartement = new ChefDepartement
+            {
+                NomUtilisateur = txtNomChefDepartement.Text,
+                PrenomUtilisateur = txtPrenomChefDepartement.Text,
+                EmailUtilisateur = txtEmailChefDepartement.Text,
+                TelUtilisateur = txtTelChefDepartement.Text,
+                MotDePasse = HashMotDePasse(txtMDPChefDepartement.Text),
+                MatriculeChefDepartement = txtMatriculeChefDepartement.Text,
+                IdDepartement = (int)cbbDepartement.SelectedValue
+            };
+
+            db.chefDepartements.Add(chefDepartement);
+            db.SaveChanges();
+
+            MessageBox.Show("Chef de département ajouté avec succès!",
+                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Effacer();
+            ActualiserGrid();
         }
 
+        
+        private void dgChefDepartement_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = dgChefDepartement.Rows[e.RowIndex];
+            txtNomChefDepartement.Text = row.Cells["Nom"].Value?.ToString();
+            txtPrenomChefDepartement.Text = row.Cells["Prenom"].Value?.ToString();
+            txtEmailChefDepartement.Text = row.Cells["Email"].Value?.ToString();
+            txtTelChefDepartement.Text = row.Cells["Telephone"].Value?.ToString();
+            txtMatriculeChefDepartement.Text = row.Cells["Matricule"].Value?.ToString();
+        }
+
+        
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            // Logique de modification à implémenter
-            MessageBox.Show("Fonctionnalité de modification à implémenter.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (dgChefDepartement.CurrentRow == null) return;
+
+            int id = (int)dgChefDepartement.CurrentRow.Cells["Id"].Value;
+            var chefDepartement = db.chefDepartements.Find(id);
+
+            if (chefDepartement == null)
+            {
+                MessageBox.Show("ChefDepartement introuvable.", "Erreur",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            chefDepartement.NomUtilisateur = txtNomChefDepartement.Text;
+            chefDepartement.PrenomUtilisateur = txtPrenomChefDepartement.Text;
+            chefDepartement.EmailUtilisateur = txtEmailChefDepartement.Text;
+            chefDepartement.TelUtilisateur = txtTelChefDepartement.Text;
+            chefDepartement.MatriculeChefDepartement = txtMatriculeChefDepartement.Text;
+            chefDepartement.IdDepartement = (int)cbbDepartement.SelectedValue;
+
+            db.SaveChanges();
+
+            MessageBox.Show("Chef de département modifié avec succès!",
+                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Effacer();
+            ActualiserGrid();
         }
 
+        
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            // Logique de suppression à implémenter
-            MessageBox.Show("Fonctionnalité de suppression à implémenter.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (dgChefDepartement.CurrentRow == null) return;
+
+            int id = (int)dgChefDepartement.CurrentRow.Cells["Id"].Value;
+            var chefDepartement = db.chefDepartements.Find(id);
+
+            if (chefDepartement == null)
+            {
+                MessageBox.Show("ChefDepartement introuvable.", "Erreur",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            db.chefDepartements.Remove(chefDepartement);
+            db.SaveChanges();
+
+            MessageBox.Show("Chef de département supprimé avec succès!",
+                "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            Effacer();
+            ActualiserGrid();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -98,27 +198,10 @@ namespace AppSenSoutenance.Views.Parametre
             this.Close();
         }
 
-        private void dgChef_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void ConfigurerEffetsBoutons()
         {
-            if (e.RowIndex >= 0)
-            {
-                var row = dgChef.Rows[e.RowIndex];
-                txtPrenom.Text = row.Cells["Prenom"].Value?.ToString();
-                txtNom.Text = row.Cells["Nom"].Value?.ToString();
-                txtEmail.Text = row.Cells["Email"].Value?.ToString();
-                txtTel.Text = row.Cells["Telephone"].Value?.ToString();
-                // Sélectionner le département dans le combo si nécessaire
-            }
-        }
-
-        private void Effacer()
-        {
-            txtPrenom.Clear();
-            txtNom.Clear();
-            txtEmail.Clear();
-            txtTel.Clear();
-            txtMDP.Clear();
-            cbbDepartement.SelectedIndex = 0;
+            btnAdd.MouseEnter += (s, e) => btnAdd.BackColor = Color.FromArgb(39, 174, 96);
+            btnAdd.MouseLeave += (s, e) => btnAdd.BackColor = Color.FromArgb(46, 204, 113);
         }
     }
 }
