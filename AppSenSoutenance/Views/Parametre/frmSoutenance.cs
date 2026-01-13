@@ -1,4 +1,4 @@
-﻿using AppSenSoutenance.Models;
+using AppSenSoutenance.Models;
 using AppSenSoutenance.Shared;
 using MySqlX.XDevAPI;
 using Org.BouncyCastle.Tls;
@@ -66,13 +66,25 @@ namespace AppSenSoutenance.Views.Parametre
                 Id = s.IdSoutenance,
                 Date = s.DateSoutenance,
                 Lieu = s.LieuSoutenance,
-                Resultat = s.ResultatSoutenance,
-                Mention = s.MentionSoutenance,
-                Memoire = s.Memoire.SujetMemoire
+                Resultat = s.ResultatSoutenance ?? "N/A",
+                Mention = s.MentionSoutenance ?? "N/A",
+                Memoire = s.Memoire != null ? s.Memoire.SujetMemoire : "N/A"
             }).ToList();
 
             if (dgSoutenance.Columns["Id"] != null)
                 dgSoutenance.Columns["Id"].Visible = false;
+            
+            // Configurer les en-têtes des colonnes
+            if (dgSoutenance.Columns["Resultat"] != null)
+                dgSoutenance.Columns["Resultat"].HeaderText = "Résultat";
+            if (dgSoutenance.Columns["Memoire"] != null)
+                dgSoutenance.Columns["Memoire"].HeaderText = "Mémoire";
+            if (dgSoutenance.Columns["Date"] != null)
+                dgSoutenance.Columns["Date"].HeaderText = "Date";
+            if (dgSoutenance.Columns["Lieu"] != null)
+                dgSoutenance.Columns["Lieu"].HeaderText = "Lieu";
+            if (dgSoutenance.Columns["Mention"] != null)
+                dgSoutenance.Columns["Mention"].HeaderText = "Mention";
         }
 
         /// <summary>
@@ -205,9 +217,48 @@ namespace AppSenSoutenance.Views.Parametre
 
         private void dgSoutenance_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && dgSoutenance.CurrentRow != null)
             {
-                // Remplir les champs lors de la sélection
+                try
+                {
+                    int id = (int)dgSoutenance.CurrentRow.Cells["Id"].Value;
+                    Soutenance soutenance = db.soutenances.Find(id);
+                    if (soutenance != null)
+                    {
+                        txtLieu.Text = soutenance.LieuSoutenance ?? "";
+                        txtMention.Text = soutenance.MentionSoutenance ?? "";
+                        txtObservations.Text = soutenance.ObservationsSoutenance ?? "";
+                        
+                        // Sélectionner le résultat
+                        if (!string.IsNullOrEmpty(soutenance.ResultatSoutenance))
+                        {
+                            int index = cbbResultat.FindStringExact(soutenance.ResultatSoutenance);
+                            if (index >= 0)
+                            {
+                                cbbResultat.SelectedIndex = index;
+                            }
+                            else
+                            {
+                                cbbResultat.Text = soutenance.ResultatSoutenance;
+                            }
+                        }
+                        
+                        // Recharger et sélectionner le mémoire
+                        cbbMemoire.DataSource = filler.FillMemoire();
+                        cbbMemoire.DisplayMember = "Text";
+                        cbbMemoire.ValueMember = "Value";
+                        
+                        if (soutenance.IdMemoire.HasValue)
+                        {
+                            cbbMemoire.SelectedValue = soutenance.IdMemoire.Value.ToString();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Ne pas afficher d'erreur pour éviter de perturber l'utilisateur
+                    // L'erreur sera gérée lors du clic sur le bouton Sélectionner
+                }
             }
         }
 
@@ -240,8 +291,36 @@ namespace AppSenSoutenance.Views.Parametre
                         txtLieu.Text = soutenance.LieuSoutenance;
                         txtMention.Text = soutenance.MentionSoutenance;
                         txtObservations.Text = soutenance.ObservationsSoutenance;
-                        cbbResultat.SelectedValue = soutenance.ResultatSoutenance;
-                        cbbMemoire.SelectedValue = soutenance.IdMemoire;
+                        
+                        // Sélectionner le résultat (c'est un string, donc on utilise Text ou SelectedItem)
+                        if (!string.IsNullOrEmpty(soutenance.ResultatSoutenance))
+                        {
+                            // Chercher l'item correspondant dans le ComboBox
+                            int index = cbbResultat.FindStringExact(soutenance.ResultatSoutenance);
+                            if (index >= 0)
+                            {
+                                cbbResultat.SelectedIndex = index;
+                            }
+                            else
+                            {
+                                // Si la valeur n'existe pas dans la liste, utiliser Text
+                                cbbResultat.Text = soutenance.ResultatSoutenance;
+                            }
+                        }
+                        
+                        // Recharger le ComboBox mémoire pour s'assurer qu'il contient les données
+                        cbbMemoire.DataSource = filler.FillMemoire();
+                        cbbMemoire.DisplayMember = "Text";
+                        cbbMemoire.ValueMember = "Value";
+                        
+                        // Sélectionner le mémoire correspondant
+                        if (soutenance.IdMemoire.HasValue)
+                        {
+                            cbbMemoire.SelectedValue = soutenance.IdMemoire.Value.ToString();
+                            
+                            // Afficher le sujet du mémoire dans le ComboBox (déjà fait par SelectedValue)
+                            // Le DisplayMember "Text" affichera automatiquement le sujet
+                        }
                     }    
                 }
             }

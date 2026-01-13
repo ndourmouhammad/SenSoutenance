@@ -1,4 +1,4 @@
-﻿using AppSenSoutenance.Models;
+using AppSenSoutenance.Models;
 using AppSenSoutenance.Shared;
 using System;
 using System.Data;
@@ -104,7 +104,17 @@ namespace AppSenSoutenance.Views.Parametre
                     if (session != null)
                     {
                         txtSession.Text = session.LibelleSession;
-                        cbbAnneeAcademique.SelectedValue = session.IdAnneeAcademique;
+                        
+                        // Recharger le ComboBox pour s'assurer qu'il contient les données
+                        cbbAnneeAcademique.DataSource = filler.FillAnneeAcademique();
+                        cbbAnneeAcademique.DisplayMember = "Text";
+                        cbbAnneeAcademique.ValueMember = "Value";
+                        
+                        // Sélectionner l'année académique correspondante
+                        if (session.IdAnneeAcademique.HasValue)
+                        {
+                            cbbAnneeAcademique.SelectedValue = session.IdAnneeAcademique.Value.ToString();
+                        }
                     }
                     else
                     {
