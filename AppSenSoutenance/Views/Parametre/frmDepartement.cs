@@ -138,5 +138,15 @@ namespace AppSenSoutenance.Views.Parametre
         {
             this.Close();
         }
+
+        private void btnSelectionner_Click(object sender, EventArgs e)
+        {
+            var current = dvgDepartement.CurrentRow;
+            if (current == null) return;
+
+            txtNom.Text = current.Cells["Nom"].Value?.ToString() ?? "";
+            txtCode.Text = current.Cells["Code"].Value?.ToString() ?? "";
+           
+        }
     }
 }

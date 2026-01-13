@@ -102,7 +102,7 @@
             this.dgMemoire.RowHeadersWidth = 82;
             this.dgMemoire.RowTemplate.Height = 35;
             this.dgMemoire.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgMemoire.Size = new System.Drawing.Size(660, 435);
+            this.dgMemoire.Size = new System.Drawing.Size(639, 530);
             this.dgMemoire.TabIndex = 0;
             // 
             // groupBox1
@@ -131,7 +131,7 @@
             this.lblDocumentInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(140)))), ((int)(((byte)(141)))));
             this.lblDocumentInfo.Location = new System.Drawing.Point(12, 275);
             this.lblDocumentInfo.Name = "lblDocumentInfo";
-            this.lblDocumentInfo.Size = new System.Drawing.Size(142, 13);
+            this.lblDocumentInfo.Size = new System.Drawing.Size(188, 19);
             this.lblDocumentInfo.TabIndex = 7;
             this.lblDocumentInfo.Text = "Aucun document sélectionné";
             // 
@@ -158,7 +158,7 @@
             this.cbbSessionMemoire.FormattingEnabled = true;
             this.cbbSessionMemoire.Location = new System.Drawing.Point(15, 203);
             this.cbbSessionMemoire.Name = "cbbSessionMemoire";
-            this.cbbSessionMemoire.Size = new System.Drawing.Size(270, 25);
+            this.cbbSessionMemoire.Size = new System.Drawing.Size(270, 31);
             this.cbbSessionMemoire.TabIndex = 5;
             // 
             // label3
@@ -168,7 +168,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label3.Location = new System.Drawing.Point(12, 180);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 15);
+            this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Session *";
             // 
@@ -179,7 +179,7 @@
             this.cbbAnneeAcademiqueMemoire.FormattingEnabled = true;
             this.cbbAnneeAcademiqueMemoire.Location = new System.Drawing.Point(15, 143);
             this.cbbAnneeAcademiqueMemoire.Name = "cbbAnneeAcademiqueMemoire";
-            this.cbbAnneeAcademiqueMemoire.Size = new System.Drawing.Size(270, 25);
+            this.cbbAnneeAcademiqueMemoire.Size = new System.Drawing.Size(270, 31);
             this.cbbAnneeAcademiqueMemoire.TabIndex = 3;
             // 
             // txtSujetMemoire
@@ -198,7 +198,7 @@
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label2.Location = new System.Drawing.Point(12, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 15);
+            this.label2.Size = new System.Drawing.Size(149, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Année Académique *";
             // 
@@ -209,7 +209,7 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label1.Location = new System.Drawing.Point(12, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 15);
+            this.label1.Size = new System.Drawing.Size(137, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sujet du Mémoire *";
             // 
@@ -326,7 +326,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.groupBox3.Location = new System.Drawing.Point(12, 70);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(978, 105);
+            this.groupBox3.Size = new System.Drawing.Size(957, 105);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "🔍 Recherche";
@@ -340,7 +340,7 @@
             this.btnResetSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnResetSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnResetSearch.ForeColor = System.Drawing.Color.White;
-            this.btnResetSearch.Location = new System.Drawing.Point(739, 60);
+            this.btnResetSearch.Location = new System.Drawing.Point(718, 60);
             this.btnResetSearch.Name = "btnResetSearch";
             this.btnResetSearch.Size = new System.Drawing.Size(100, 32);
             this.btnResetSearch.TabIndex = 7;
@@ -357,7 +357,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(633, 60);
+            this.btnSearch.Location = new System.Drawing.Point(612, 60);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(100, 32);
             this.btnSearch.TabIndex = 6;
@@ -370,7 +370,7 @@
             this.txtRSession.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRSession.Location = new System.Drawing.Point(455, 63);
             this.txtRSession.Name = "txtRSession";
-            this.txtRSession.Size = new System.Drawing.Size(180, 23);
+            this.txtRSession.Size = new System.Drawing.Size(180, 27);
             this.txtRSession.TabIndex = 5;
             // 
             // label6
@@ -380,7 +380,7 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label6.Location = new System.Drawing.Point(452, 40);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 15);
+            this.label6.Size = new System.Drawing.Size(58, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Session";
             // 
@@ -389,7 +389,7 @@
             this.txtRAnneeAcademique.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRAnneeAcademique.Location = new System.Drawing.Point(245, 63);
             this.txtRAnneeAcademique.Name = "txtRAnneeAcademique";
-            this.txtRAnneeAcademique.Size = new System.Drawing.Size(200, 23);
+            this.txtRAnneeAcademique.Size = new System.Drawing.Size(200, 27);
             this.txtRAnneeAcademique.TabIndex = 3;
             // 
             // label4
@@ -399,7 +399,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label4.Location = new System.Drawing.Point(242, 40);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 15);
+            this.label4.Size = new System.Drawing.Size(139, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Année Académique";
             // 
@@ -408,7 +408,7 @@
             this.txtRSujet.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRSujet.Location = new System.Drawing.Point(20, 63);
             this.txtRSujet.Name = "txtRSujet";
-            this.txtRSujet.Size = new System.Drawing.Size(215, 23);
+            this.txtRSujet.Size = new System.Drawing.Size(215, 27);
             this.txtRSujet.TabIndex = 1;
             // 
             // label5
@@ -418,7 +418,7 @@
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.label5.Location = new System.Drawing.Point(17, 40);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 15);
+            this.label5.Size = new System.Drawing.Size(42, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Sujet";
             // 
@@ -429,7 +429,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(998, 60);
+            this.panel1.Size = new System.Drawing.Size(994, 60);
             this.panel1.TabIndex = 4;
             // 
             // lblTitle
@@ -439,13 +439,13 @@
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(12, 12);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(309, 32);
+            this.lblTitle.Size = new System.Drawing.Size(379, 41);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "📚 Gestion des Mémoires";
             // 
             // frmMemoire
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
