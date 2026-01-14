@@ -93,5 +93,66 @@ namespace AppSenSoutenance.Views.Parametre
         {
 
         }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            var current = dvgChefDepartement.CurrentRow;
+            if (current == null) return;
+
+            int id = (int)current.Cells["Id"].Value;
+
+            var chefDepartement = db.chefDepartements.Find(id);
+            if (chefDepartement == null)
+            {
+                MessageBox.Show("ChefDepartement introuvable.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            chefDepartement.NomUtilisateur = txtNom.Text;
+            chefDepartement.PrenomUtilisateur = txtPrenom.Text;
+            chefDepartement.EmailUtilisateur = txtEmail.Text;
+            chefDepartement.TelUtilisateur = txtTel.Text;
+            chefDepartement.MotDePasse = txtMDP.Text;
+
+            // CORRECTION
+            chefDepartement.IdDepartement = (int)cbbDepartement.SelectedValue;
+
+            db.SaveChanges();
+
+            MessageBox.Show("ChefDepartement modifié avec succès!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Effacer();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            // Vérifie qu'une ligne est sélectionnée
+            if (dvgChefDepartement.CurrentRow == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un chef de département.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Récupère la ligne sélectionnée
+            var row = dvgChefDepartement.CurrentRow;
+
+            // Remplir les champs que tu veux modifier ou supprimer
+            txtNom.Text = row.Cells["Nom"].Value?.ToString();
+            txtPrenom.Text = row.Cells["Prenom"].Value?.ToString();
+            txtEmail.Text = row.Cells["Email"].Value?.ToString();
+            txtTel.Text = row.Cells["Telephone"].Value?.ToString();
+            txtMDP.Text = row.Cells["MotDePasse"]?.Value?.ToString();
+
+            // Remplir le ComboBox Département
+            int departementId = (int)row.Cells["IdDepartement"].Value;
+            cbbDepartement.SelectedValue = departementId;
+
+            MessageBox.Show("Ligne sélectionnée ! Vous pouvez maintenant modifier ou supprimer.",
+                            "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
