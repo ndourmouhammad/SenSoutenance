@@ -139,7 +139,6 @@ namespace AppSenSoutenance.Views.Parametre
 
             // Récupère la ligne sélectionnée
             var row = dvgChefDepartement.CurrentRow;
-
             // Remplir les champs que tu veux modifier ou supprimer
             txtNom.Text = row.Cells["Nom"].Value?.ToString();
             txtPrenom.Text = row.Cells["Prenom"].Value?.ToString();
@@ -153,6 +152,42 @@ namespace AppSenSoutenance.Views.Parametre
 
             MessageBox.Show("Ligne sélectionnée ! Vous pouvez maintenant modifier ou supprimer.",
                             "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            // Vérifie qu'une ligne est sélectionnée
+            if (dvgChefDepartement.CurrentRow == null)
+            {
+                MessageBox.Show("Veuillez sélectionner un chef de département à supprimer.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Demande confirmation
+            var confirm = MessageBox.Show("Êtes-vous sûr de vouloir supprimer ce chef de département ?",
+                                          "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm != DialogResult.Yes) return;
+
+            // Récupère l'ID
+            int id = (int)dvgChefDepartement.CurrentRow.Cells["Id"].Value;
+
+            // Cherche dans la base
+            var chefDepartement = db.chefDepartements.Find(id);
+            if (chefDepartement == null)
+            {
+                MessageBox.Show("Chef de département introuvable.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Supprime de la base
+            db.chefDepartements.Remove(chefDepartement);
+            db.SaveChanges();
+
+            MessageBox.Show("Chef de département supprimé avec succès !", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Rafraîchir la grille et effacer les champs
+            Effacer();
+            ChargerGrid();
         }
     }
 }
