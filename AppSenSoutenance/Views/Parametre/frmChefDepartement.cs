@@ -74,13 +74,31 @@ namespace AppSenSoutenance.Views.Parametre
         }
         private void ChargerDepartements()
         {
-            cbbDepartement.DataSource = db.Departements.ToList();
-            cbbDepartement.DisplayMember = "LibelleDepartement";
-            cbbDepartement.ValueMember = "IdDepartement";
+            try
+            {
+                var departements = db.Departements.ToList();
+
+                if (departements == null || departements.Count == 0)
+                {
+                    MessageBox.Show("Aucun département trouvé. Veuillez en ajouter avant de continuer.", 
+                                    "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                cbbDepartement.DataSource = departements;
+                cbbDepartement.DisplayMember = "LibelleDepartement";
+                cbbDepartement.ValueMember = "IdDepartement";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du chargement des départements : {ex.Message}", 
+                                "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void frmChefDepartement_Load(object sender, EventArgs e)
         {
             ChargerDepartements();
+            ChargerGrid();
         }
 
 
@@ -188,6 +206,11 @@ namespace AppSenSoutenance.Views.Parametre
             // Rafraîchir la grille et effacer les champs
             Effacer();
             ChargerGrid();
+        }
+
+        private void cbbDepartement_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

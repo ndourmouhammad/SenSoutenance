@@ -32,11 +32,11 @@ namespace AppSenSoutenance
             // Recherche de l'utilisateur (tous types)
             Utilisateur utilisateur = db.utilisateurs.FirstOrDefault(u => u.EmailUtilisateur == email);
 
-            if (utilisateur == null)
-            {
-                MessageBox.Show("Email ou mot de passe incorrect");
-                return;
-            }
+            //if (utilisateur == null)
+            //{
+            //    MessageBox.Show("Email ou mot de passe incorrect");
+            //    return;
+            //}
 
             // Calcul du hash du mot de passe saisi
             string hashInput;
@@ -45,24 +45,24 @@ namespace AppSenSoutenance
                 hashInput = Shared.Crypted.GetMd5Hash(md5, password);
             }
 
-            // 🔐 COMPARAISON
+            //// COMPARAISON
             if (!string.Equals(hashInput, utilisateur.MotDePasse, StringComparison.OrdinalIgnoreCase))
             {
                 MessageBox.Show("Email ou mot de passe incorrect");
                 return;
             }
 
-            // Déterminer le profil
+            //// Déterminer le profil
             string profil = "Inconnu";
             if (utilisateur is Admin) profil = "Admin";
             else if (utilisateur is ChefDepartement) profil = "ChefDepartement";
             else if (utilisateur is Professeur) profil = "Professeur";
             else if (utilisateur is Candidat) profil = "Candidat";
 
-            // ✅ Accès
+            // Accès
             frmMDI mdi = new frmMDI();
-            // mdi.profil = profil;
-            mdi.profil = "Admin";
+            mdi.profil = profil;
+            //mdi.profil = "Admin";
             mdi.Show();
             this.Hide();
         }

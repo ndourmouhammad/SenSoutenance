@@ -24,7 +24,7 @@ Assignation des interfaces
   - `AppSenSoutenance\Views\Parametre\frmSession.cs`
   - `AppSenSoutenance\Views\Parametre\frmAnneeAcademique.cs`
 
-- TO DO - Cheikh
+- DONE - Cheikh
   - `AppSenSoutenance\Views\Parametre\frmSoutenance.cs`
   - `AppSenSoutenance\Views\Parametre\frmMemoire.cs`
 

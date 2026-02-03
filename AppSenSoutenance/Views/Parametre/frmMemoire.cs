@@ -665,5 +665,10 @@ namespace AppSenSoutenance.Views.Parametre
         }
 
         #endregion
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
