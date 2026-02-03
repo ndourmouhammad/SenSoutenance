@@ -20,6 +20,7 @@ namespace AppSenSoutenance
         public frmMDI()
         {
             InitializeComponent();
+            this.MdiChildActivate += FrmMDI_MdiChildActivate;
         }
 
         /// <summary>
@@ -98,6 +99,27 @@ namespace AppSenSoutenance
 
             // Charger le tableau de bord par défaut
             tableauDeBordToolStripMenuItem_Click(null, null);
+        }
+
+        // Lorsque l'enfant MDI change (activation / maximisation), s'assurer que ses boutons
+        // de contrôle (minimize/maximize/close) ne sont pas affichés dans la barre du parent.
+        private void FrmMDI_MdiChildActivate(object sender, EventArgs e)
+        {
+            var child = this.ActiveMdiChild;
+            if (child == null) return;
+
+            // Désactiver les boutons de contrôle du formulaire enfant afin qu'ils n'apparaissent
+            // pas dans la barre de titre du parent lorsque l'enfant est maximisé.
+            try
+            {
+                child.ControlBox = false;
+                child.MinimizeBox = false;
+                child.MaximizeBox = false;
+            }
+            catch
+            {
+                // ignorer toute exception liée à l'état du formulaire
+            }
         }
 
         private void tableauDeBordToolStripMenuItem_Click(object sender, EventArgs e)
