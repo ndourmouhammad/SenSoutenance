@@ -99,6 +99,7 @@ namespace AppSenSoutenance
             flowLayoutPanel1.Controls.Add(CreateCard("Mémoires", "Dépôt et validation des travaux de fin d'études.", Color.FromArgb(231, 76, 60), () => OpenForm(new frmMemoire())));
             flowLayoutPanel1.Controls.Add(CreateCard("Soutenances", "Organisation et calendrier des jurys.", Color.FromArgb(231, 76, 60), () => OpenForm(new frmSoutenance())));
             flowLayoutPanel1.Controls.Add(CreateCard("Départements", "Gestion des départements et des chefs de service.", Color.FromArgb(155, 89, 182), () => OpenForm(new frmDepartement())));
+            flowLayoutPanel1.Controls.Add(CreateCard("Chef de Département", "Gestion des responsables de département.", Color.FromArgb(155, 89, 182), () => OpenForm(new frmChefDepartement())));
         }
 
         private void OpenForm(Form f)

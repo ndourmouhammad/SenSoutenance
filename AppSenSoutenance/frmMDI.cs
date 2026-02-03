@@ -122,6 +122,11 @@ namespace AppSenSoutenance
             }
         }
 
+        public void ShowDashboard()
+        {
+            tableauDeBordToolStripMenuItem_Click(null, null);
+        }
+
         private void tableauDeBordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fermer();

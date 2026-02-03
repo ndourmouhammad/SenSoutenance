@@ -290,7 +290,7 @@ namespace AppSenSoutenance.Views.Parametre
                         txtCode.Text = row.Cells["Code"].Value?.ToString() ?? "";
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Erreur silencieuse pour ne pas perturber l'utilisateur
                 }
@@ -361,6 +361,10 @@ namespace AppSenSoutenance.Views.Parametre
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            if (this.MdiParent is frmMDI mdi)
+            {
+                mdi.ShowDashboard();
+            }
         }
 
         #endregion

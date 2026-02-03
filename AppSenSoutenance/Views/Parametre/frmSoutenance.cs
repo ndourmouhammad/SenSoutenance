@@ -213,6 +213,10 @@ namespace AppSenSoutenance.Views.Parametre
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            if (this.MdiParent is frmMDI mdi)
+            {
+                mdi.ShowDashboard();
+            }
         }
 
         private void dgSoutenance_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -254,7 +258,7 @@ namespace AppSenSoutenance.Views.Parametre
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Ne pas afficher d'erreur pour éviter de perturber l'utilisateur
                     // L'erreur sera gérée lors du clic sur le bouton Sélectionner

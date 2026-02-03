@@ -418,6 +418,10 @@ namespace AppSenSoutenance.Views.Parametre
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+            if (this.MdiParent is frmMDI mdi)
+            {
+                mdi.ShowDashboard();
+            }
         }
 
         #endregion
